@@ -500,7 +500,7 @@
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem groupUuid="" mapUuid="" file="logo_mbn.png" position="0.6349,0.3334,mm" id="LOGO MBN" mode="1" pictureRotation="0" positionOnPage="0.6349,0.3334,mm" size="36.7689,36.2564,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" type="65640" zValue="22" outlineWidthM="0.3,mm" templateUuid="{07ad37a6-53f3-44b5-9795-d61871e6ee9f}" anchorPoint="0" positionLock="false" uuid="{07ad37a6-53f3-44b5-9795-d61871e6ee9f}" excludeFromExports="0" background="false" northMode="0" northOffset="0" resizeMode="0">
+ <LayoutItem groupUuid="" mapUuid="" file="logo_mbn.png" position="1.4348,1.1334,mm" id="LOGO MBN" mode="1" pictureRotation="0" positionOnPage="1.4348,1.1334,mm" size="35.1689,34.6564,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" type="65640" zValue="22" outlineWidthM="0.3,mm" templateUuid="{13d0df64-9669-4bb3-ac10-59a418e062f1}" anchorPoint="0" positionLock="false" uuid="{13d0df64-9669-4bb3-ac10-59a418e062f1}" excludeFromExports="0" background="false" northMode="0" northOffset="0" resizeMode="0">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -649,7 +649,7 @@
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem groupUuid="" position="0.6347,36.6641,mm" id="MARCO EXTERIOR" positionOnPage="0.6347,36.6641,mm" size="208.909,217.376,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" cornerRadiusMeasure="0,mm" frame="false" type="65643" zValue="14" outlineWidthM="0.3,mm" templateUuid="{1bfd8664-6652-4b4b-82da-0f161b2b3178}" shapeType="1" positionLock="false" uuid="{1bfd8664-6652-4b4b-82da-0f161b2b3178}" excludeFromExports="0" background="false">
+ <LayoutItem groupUuid="" position="0.6347,36.6641,mm" id="MARCO EXTERIOR" positionOnPage="0.6347,36.6641,mm" size="208.909,217.376,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" cornerRadiusMeasure="0,mm" frame="false" type="65643" zValue="14" outlineWidthM="0.3,mm" templateUuid="{6976584e-7c12-4bf2-a619-be189bcc424d}" shapeType="1" positionLock="false" uuid="{6976584e-7c12-4bf2-a619-be189bcc424d}" excludeFromExports="0" background="false">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
