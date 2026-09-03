@@ -1,0 +1,12 @@
+# Los activos se verifican por sha256: git NO debe tocar sus bytes.
+# Con autocrlf activo, convertir LF a CRLF cambiaria el hash y el script
+# rechazaria la descarga por no calzar con el manifiesto.
+*                 -text
+manifiesto_mbn.json  -text
+plantilla_mbn_4_2.qpt -text
+L2_PROPUESTA.json    -text
+logo_mbn.png         binary
+icon.png             binary
+
+# La documentacion si puede normalizarse
+*.md text eol=lf
