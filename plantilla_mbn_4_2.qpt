@@ -84,7 +84,7 @@
    <Guide orientation="1" page="0" position="250.68800000000002" units="mm"/>
   </GuideCollection>
  </PageCollection>
- <LayoutItem pictureWidth="13.0402" groupUuid="" mapUuid="" pictureHeight="20.736" file="arrows/NorthArrow_04.svg" position="8.1239,60.8252,mm" id="Flecha del Norte" mode="0" pictureRotation="0" positionOnPage="8.1239,60.8252,mm" size="16.1854,20.736,mm" svgBorderWidth="0.2" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" type="65640" zValue="49" outlineWidthM="0.3,mm" templateUuid="{ed2f031e-bd73-4bf3-a4f8-3aa084624149}" anchorPoint="0" svgFillColor="47,47,47,255,hsv:0,0,0.18315403982604714,1" svgBorderColor="179,179,179,255,hsv:0,0,0.70099946593423357,1" positionLock="false" uuid="{ed2f031e-bd73-4bf3-a4f8-3aa084624149}" excludeFromExports="0" background="false" northMode="0" northOffset="0" resizeMode="0">
+ <LayoutItem pictureWidth="13.0402" groupUuid="" mapUuid="" pictureHeight="20.736" file="arrows/NorthArrow_04.svg" position="8.1239,60.8252,mm" id="FLECHA NORTE" mode="0" pictureRotation="0" positionOnPage="8.1239,60.8252,mm" size="16.1854,20.736,mm" svgBorderWidth="0.2" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" type="65640" zValue="49" outlineWidthM="0.3,mm" templateUuid="{ed2f031e-bd73-4bf3-a4f8-3aa084624149}" anchorPoint="0" svgFillColor="47,47,47,255,hsv:0,0,0.18315403982604714,1" svgBorderColor="179,179,179,255,hsv:0,0,0.70099946593423357,1" positionLock="false" uuid="{ed2f031e-bd73-4bf3-a4f8-3aa084624149}" excludeFromExports="0" background="false" northMode="0" northOffset="0" resizeMode="0">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -123,7 +123,7 @@
      <Option value="collection" name="type" type="QString"/>
     </Option>
    </data_defined_properties>
-   <layer id="{49435a9c-e52b-463c-9f4a-b37719c24d09}" class="GradientFill" pass="0" enabled="1" locked="0">
+   <layer id="{49435a9c-e52b-463c-9f4a-b37719c24d09}" class="GradientFill" pass="0" enabled="0" locked="0">
     <Option type="Map">
      <Option value="0" name="angle" type="QString"/>
      <Option value="205,20,31,255,rgb:0.8039216,0.0784314,0.1215686,1" name="color" type="QString"/>
@@ -500,7 +500,7 @@
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem groupUuid="" mapUuid="" file="C:\Users\ccea\OneDrive - Ministerio de Bienes Nacionales\DATA-LAKE-MBN\01-CODIGO\QGIS_4.2\BANCO_PRUEBAS_4_2\logo_mbn.png" position="1.8348,2.9277,mm" id="LOGO MBN" mode="1" pictureRotation="0" positionOnPage="1.8348,2.9277,mm" size="34.3689,31.0679,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" type="65640" zValue="22" outlineWidthM="0.3,mm" templateUuid="{e5158dcb-ca0e-4e3d-9281-af6352bf9744}" anchorPoint="0" positionLock="false" uuid="{e5158dcb-ca0e-4e3d-9281-af6352bf9744}" excludeFromExports="0" background="false" northMode="0" northOffset="0" resizeMode="0">
+ <LayoutItem groupUuid="" mapUuid="" file="logo_mbn.png" position="0.6349,0.3334,mm" id="LOGO MBN" mode="1" pictureRotation="0" positionOnPage="0.6349,0.3334,mm" size="36.7689,36.2564,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" type="65640" zValue="22" outlineWidthM="0.3,mm" templateUuid="{07ad37a6-53f3-44b5-9795-d61871e6ee9f}" anchorPoint="0" positionLock="false" uuid="{07ad37a6-53f3-44b5-9795-d61871e6ee9f}" excludeFromExports="0" background="false" northMode="0" northOffset="0" resizeMode="0">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -649,7 +649,7 @@
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem groupUuid="" position="0.6347,36.6641,mm" id="MARCO EXTERIOR" positionOnPage="0.6347,36.6641,mm" size="208.909,217.376,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" cornerRadiusMeasure="0,mm" frame="false" type="65643" zValue="14" outlineWidthM="0.3,mm" templateUuid="{d14bb952-07c5-412b-a86c-d4f029a666c9}" shapeType="1" positionLock="false" uuid="{d14bb952-07c5-412b-a86c-d4f029a666c9}" excludeFromExports="0" background="false">
+ <LayoutItem groupUuid="" position="0.6347,36.6641,mm" id="MARCO EXTERIOR" positionOnPage="0.6347,36.6641,mm" size="208.909,217.376,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" cornerRadiusMeasure="0,mm" frame="false" type="65643" zValue="14" outlineWidthM="0.3,mm" templateUuid="{1bfd8664-6652-4b4b-82da-0f161b2b3178}" shapeType="1" positionLock="false" uuid="{1bfd8664-6652-4b4b-82da-0f161b2b3178}" excludeFromExports="0" background="false">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
