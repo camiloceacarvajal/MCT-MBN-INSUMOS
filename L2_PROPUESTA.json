@@ -1,0 +1,2076 @@
+{
+  "version": "L2-PROPUESTA-1.0",
+  "metadata": {
+    "descripcion": "Propuesta L2: L1 + plantillas dinámicas {campo} + nombres canónicos + vínculo a tabla del GPKG limpio. NO reemplaza L1 hasta aprobación.",
+    "generado": "2026-06-09 (plantillas faltantes aplicadas)",
+    "base": "consumo_maestro_LIMPIO.gpkg",
+    "reglas_total": 105
+  },
+  "reglas": {
+    "___VARIABLES_COMPLEMENTARIAS___": {},
+    "Sitios arqueológicos": {
+      "frase": "Se identifica superposición con Sitios Arqueológicos registrados.",
+      "sufijo": "[Cualquier hallazgo debe ser informado al Consejo de Monumentos Nacionales (Ley 17.288). Describir nivel de superposición o sector afectado]",
+      "solo_nc": false,
+      "plantilla": "Se identifica superposición con Sitios Arqueológicos registrados de uso {uso_suelo}.",
+      "campos_narrativos": [
+        {
+          "campo": "uso_suelo",
+          "pct_llena": 0.983,
+          "ejemplos": [
+            "Otro",
+            "Sin uso",
+            "Sin información / No determinado"
+          ]
+        }
+      ],
+      "tabla_gpkg": "sitios_arqueologicos"
+    },
+    "Fallas": {
+      "frase": "El inmueble se emplaza sobre trazas de Fallas Geológicas.",
+      "sufijo": "[Se recomienda considerar esta condición en los estudios de mecánica de suelos. Especificar nombre de la falla si aplica]",
+      "solo_nc": false,
+      "plantilla": "El inmueble se emplaza sobre trazas de Fallas Geológicas de tipo {tipo}.",
+      "campos_narrativos": [
+        {
+          "campo": "tipo",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "S/I",
+            "Traza Primaria",
+            "Traza Secundaria"
+          ]
+        }
+      ],
+      "tabla_gpkg": "fallas"
+    },
+    "Área de Preservación Ecológica": {
+      "frase": "Se identifica la presencia de Área de Preservación Ecológica.",
+      "sufijo": "[Existen restricciones estrictas para la edificación y cambios de uso de suelo. Señalar el área específica]",
+      "solo_nc": false,
+      "plantilla": "Se identifica la presencia de Área de Preservación Ecológica denominado «{nombre}», (Decreto/Resolución {decreto}).",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Península de Mejillones",
+            "Desembocadura del Río Loa",
+            "Laguna Legia"
+          ]
+        },
+        {
+          "campo": "decreto",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Resolución 73",
+            "Resolución 25",
+            "DFL 458"
+          ]
+        }
+      ],
+      "tabla_gpkg": "area_de_preservacion_ecologica"
+    },
+    "Campamentos": {
+      "frase": "Se identifica presencia de asentamientos precarios (Campamentos).",
+      "sufijo": "[Se debe coordinar con SERVIU para verificar programas de radicación o erradicación vigente. Indicar nombre del campamento]",
+      "solo_nc": false,
+      "plantilla": "Se identifica presencia de asentamientos precarios (Campamentos, catastro año {AÑO}) denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Andres Sabella",
+            "Villa Esperanza",
+            "Pirámide Alta"
+          ]
+        },
+        {
+          "campo": "AÑO",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "2024"
+          ]
+        }
+      ],
+      "tabla_gpkg": "campamentos"
+    },
+    "Mapa Geológico": {
+      "frase": "Análisis sobre Mapa Geológico detecta unidades específicas en el área.",
+      "sufijo": "[Información técnica relevante para la caracterización física del predio.]",
+      "solo_nc": false,
+      "tabla_gpkg": "mapa_geologico",
+      "plantilla": "Análisis sobre Mapa Geológico detecta unidades específicas en el área de tipo {unidad}.",
+      "campos_narrativos": [
+        {
+          "campo": "unidad",
+          "pct_llena": 0.71,
+          "ejemplos": [
+            "Secuencias sedimentarias de abanicos aluviales",
+            "Secuencias volcanicas continentales",
+            "Centros y secuencias volcanicas"
+          ]
+        }
+      ]
+    },
+    "Patrimonio Cultural Inmaterial": {
+      "frase": "Se reconoce la presencia de elementos de Patrimonio Cultural Inmaterial.",
+      "sufijo": "[Se debe cautelar la salvaguardia de las expresiones culturales identificadas. Indicar tipo de patrimonio]",
+      "solo_nc": false,
+      "plantilla": "Se reconoce la presencia de elementos de Patrimonio Cultural Inmaterial en el sector {localidad}.",
+      "campos_narrativos": [
+        {
+          "campo": "localidad",
+          "pct_llena": 0.656,
+          "ejemplos": [
+            "Santiago de Rio Grande",
+            "Toconao",
+            "Oficina salitrera Pedro de Valdivia"
+          ]
+        }
+      ],
+      "tabla_gpkg": "patrimonio_cultural_inmaterial"
+    },
+    "Propiedad Fiscal": {
+      "tipo": "dinamico",
+      "plantilla": "La unidad catastral ID {id} se encuentra inscrita a favor del Fisco a {inscrip_tec}. El predio está individualizado en el {plano_tec} con el nombre o dirección {nombre}, {superficie_frase}. Actualmente, {tenencia}. {detalle_interseccion} {texto_rol}"
+    },
+    "Propiedad Fiscal - UGT": {
+      "tipo": "alerta_ugt",
+      "campo": "UGT_ALERTA",
+      "descripcion": "Alerta de Unidad de Gestion Territorial. La capa Propiedad fiscal trae en UGT_ALERTA la palabra gatillo VENTAS cuando la unidad esta en el plan de ventas o licitaciones del ano. BNP NO se informa por aqui: tiene su propia capa ('Bienes Nacionales Protegidos') con el campo HOMOLOGA y su regla con 'condiciones'. Ponerlo en los dos lados haria que la minuta lo dijera dos veces. SIN CRUCE REAL NO HAY ALERTA: una UC entra al bloque fiscal por intersects(), que tambien es verdadero cuando el poligono de analisis solo comparte la linea de deslinde con ella.",
+      "alertas": {
+        "VENTAS": "Se debe relevar que el inmueble analizado se ha identificado como parte del Plan de Ventas y/o Licitaciones que impulsa el Ministerio de Bienes Nacionales en alguna de sus fases, por lo que se debe revisar su estado y disponibilidad con la Unidad de Bienes de esta Seremi."
+      },
+      "interseccion": {
+        "total": "El polígono de análisis se encuentra íntegramente al interior de este inmueble.",
+        "parcial": "La superposición del polígono de análisis con este inmueble es de un {pct}% ({area} m²).",
+        "minima": "La superposición del polígono de análisis con este inmueble es inferior a un {pct_min}% ({area} m²)."
+      }
+    },
+    "Formaciones Vegetacionales Gajardo(NC)": {
+      "frase": "Variable NC: Se identifican Formaciones Vegetacionales (Gajardo).",
+      "sufijo": "[Análisis especializado requerido para la protección de biodiversidad. Indicar formación predominante]",
+      "solo_nc": true
+    },
+    "DATURA(NC-INDIGENA)": {
+      "frase": "Variable NC-Indígena: Superposición detectada en sistema DATURA.",
+      "sufijo": "[Uso exclusivo para análisis especializado de Nivel Central (Unidad de Asuntos Indígenas). Indicar detalle del hallazgo]",
+      "solo_nc": true
+    },
+    "URAQI(NC-INDIGENA)": {
+      "frase": "Variable NC-Indígena: Hallazgo detectado en sistema URAQI.",
+      "sufijo": "[Análisis reservado para la Unidad de Estudios Territoriales sobre saneamiento indígena. Indicar detalle del expediente]",
+      "solo_nc": true
+    },
+    "Pisos Vegetacionales de Pliscoff (2017)(NC)": {
+      "frase": "Variable NC: Se identifican Pisos Vegetacionales (Pliscoff 2017).",
+      "sufijo": "[Información crítica para planes regionales de biodiversidad. Indicar tipo de piso vegetacional]",
+      "solo_nc": true
+    },
+    "___CONTEXTO_TERRITORIAL___": {},
+    "Infraestructura marítima, portuaria y costera": {
+      "frase": "Se identifica intersección con terreno de Infraestructura marítima o portuaria.",
+      "sufijo": "[Verificar compatibilidad con zonas de concesiones y usos de borde costero.]",
+      "solo_nc": false,
+      "tabla_gpkg": "infraestructura_maritima_portuaria_y_costera",
+      "plantilla": "Se identifica intersección con terreno de Infraestructura marítima o portuaria denominado «{descriptio}».",
+      "campos_narrativos": [
+        {
+          "campo": "descriptio",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Caleta Pesquera Punta Arenas",
+            "Borde Costero de Mejillones",
+            "Caleta Pesquera Tocopilla"
+          ]
+        }
+      ]
+    },
+    "Red aeroportuaria": {
+      "frase": "Se detecta cercanía a Red Aeroportuaria.",
+      "sufijo": "[Considerar restricciones de altura y servidumbres aeronáuticas de la DGAC. Indicar aeropuerto o aeródromo]",
+      "solo_nc": false,
+      "plantilla": "Se detecta cercanía a Red Aeroportuaria denominado «{nombre}», de tipo {tipo}, a cargo de {propiedad}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "San Pedro de Atacama",
+            "Las Breas",
+            "Barriles"
+          ]
+        },
+        {
+          "campo": "tipo",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Aeródromo",
+            "Aeropuerto"
+          ]
+        },
+        {
+          "campo": "propiedad",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Fiscal",
+            "Privada",
+            "Municipal"
+          ]
+        }
+      ],
+      "tabla_gpkg": "red_aeroportuaria"
+    },
+    "Límite internacional": {
+      "frase": "El área se ubica en proximidad al Límite Internacional.",
+      "sufijo": "[Se debe tener presente la normativa sobre soberanía y seguridad fronteriza. Indicar distancia aproximada]",
+      "solo_nc": false,
+      "tabla_gpkg": "limite_internacional",
+      "plantilla": "El área se ubica en proximidad al Límite Internacional, limítrofe con {pais_c}.",
+      "campos_narrativos": [
+        {
+          "campo": "pais_c",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Bolivia",
+            "Argentina",
+            "Perú"
+          ]
+        }
+      ]
+    },
+    "Red de caminos bcn": {
+      "frase": "Superposición con Red de Caminos (BCN).",
+      "sufijo": "[Verificar fajas de protección y accesibilidad vial. Indicar nombre o rol del camino]",
+      "solo_nc": false,
+      "tabla_gpkg": "red_de_caminos_bcn",
+      "plantilla": "Superposición con Red de Caminos (BCN) denominado «{nom_ruta}», de tipo {catego}.",
+      "campos_narrativos": [
+        {
+          "campo": "nom_ruta",
+          "pct_llena": 0.82,
+          "ejemplos": [
+            "Serrano",
+            "Santa Lucía",
+            "Las Tipias"
+          ]
+        },
+        {
+          "campo": "catego",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Rural",
+            "Urbano"
+          ]
+        }
+      ]
+    },
+    "Red ferroviaria": {
+      "frase": "Presencia de Red Ferroviaria identificada.",
+      "sufijo": "[Respetar fajas de vía y servidumbres de seguridad ferroviaria (EFE). Indicar ramal afectado]",
+      "solo_nc": false,
+      "tabla_gpkg": "red_ferroviaria"
+    },
+    "Red Vial Nacional Mop": {
+      "frase": "Afectación por Red Vial Nacional (MOP).",
+      "sufijo": "[Verificar fajas de cierre, líneas oficiales y autorizaciones de vialidad (DFL 850).]",
+      "solo_nc": false,
+      "plantilla": "Afectación por Red Vial Nacional (MOP) correspondiente al rol {rol}, de tipo {clasificacion}.",
+      "campos_narrativos": [
+        {
+          "campo": "rol",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Ruta 1",
+            "Ruta 5",
+            "B-330",
+            "B-12"
+          ]
+        },
+        {
+          "campo": "clasificacion",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Camino Nacional Longitudinal",
+            "Camino Regional Comunal",
+            "Camino Regional Principal"
+          ]
+        }
+      ],
+      "tabla_gpkg": "red_vial_nacional_mop"
+    },
+    "Zona fronteriza D.L. 1939": {
+      "frase": "Respecto al contexto territorial, el inmueble se encuentra emplazado total o parcialmente en la franja de 10 kilómetros desde el límite internacional que define el Decreto Ley N° 1.939.",
+      "sufijo": "[Por consiguiente, la tramitación de cualquier acto administrativo debe ceñirse a las restricciones especiales de adquisición y tenencia vigentes en dicha franja.]",
+      "solo_nc": false,
+      "tabla_gpkg": "zona_fronteriza_d_l_1939"
+    },
+    "Zona fronteriza DIFROL": {
+      "frase": "El área de estudio se emplaza sobre la Zona Fronteriza definida por la Dirección Nacional de Fronteras y Límites del Estado (DIFROL).",
+      "sufijo": "[En virtud del artículo 5° del DFL N° 83, la Administración del Estado no podrá vender, arrendar, otorgar concesiones, permisos o autorizaciones, ni celebrar actos o contratos respecto a bienes fiscales situados en esta zona sin la autorización previa y expresa de DIFROL.]",
+      "solo_nc": false,
+      "tabla_gpkg": "zona_fronteriza_difrol"
+    },
+    "Comunas(incluye regiones con capacidad de astronomia)": {
+      "frase": "Ubicación en comuna con capacidades astronómicas.",
+      "sufijo": "[Verificar normativa sobre contaminación lumínica (D.S. N°43 del MMA).]",
+      "solo_nc": false,
+      "tabla_gpkg": "comunas"
+    },
+    "___PLANIFICACION_TERRITORIAL___": {},
+    "Plan Regional de Desarrollo Urbano": {
+      "frase": "Sujeto a las directrices del Plan Regional de Desarrollo Urbano (PRDU).",
+      "sufijo": "[Contrastar el destino solicitado con los objetivos de ordenamiento regional. Indicar lineamiento aplicable si corresponde]",
+      "solo_nc": false,
+      "plantilla": "Sujeto a las directrices del Plan Regional de Desarrollo Urbano (PRDU) denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Apoyo Agro-Turístico",
+            "Eje Penetración Sur",
+            "Borde Costero"
+          ]
+        }
+      ],
+      "tabla_gpkg": "plan_regional_de_desarrollo_urbano"
+    },
+    "Planes Reguladores Comunales": {
+      "frase": "El sector está afecto a Plan Regulador Comunal (PRC).",
+      "sufijo": "[Indicar Zona. Revisar usos permitidos de suelo en el PRC.]",
+      "solo_nc": false,
+      "plantilla": "El sector está afecto a Plan Regulador Comunal (PRC) denominado «{nombre}», en el sector {sector}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 0.992,
+          "ejemplos": [
+            "ZUDC-09 Zona de Reserva Industrial",
+            "C-1a Centro Institucional y Comercial",
+            "C-1b Sub Centro Urbano"
+          ]
+        },
+        {
+          "campo": "sector",
+          "pct_llena": 0.977,
+          "ejemplos": [
+            "Calama",
+            "<NA>",
+            "Arica"
+          ]
+        }
+      ],
+      "tabla_gpkg": "planes_reguladores_comunales"
+    },
+    "Planes Reguladores Intercomunales": {
+      "frase": "Regido por Plan Regulador Intercomunal (PRI).",
+      "sufijo": "[Indicar Zona Intercomunal. Considerar áreas de extensión urbana y zonas rurales asociadas.]",
+      "solo_nc": false,
+      "plantilla": "Regido por Plan Regulador Intercomunal (PRI) denominado «{nombre}», en el sector {sector}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 0.997,
+          "ejemplos": [
+            "ZPIP Zona de protección por interés paisajístico",
+            "ZPIC Zona de protección por interés científico cultural",
+            "ZPAPC Zona de producción con actividades productivas controladas"
+          ]
+        },
+        {
+          "campo": "sector",
+          "pct_llena": 0.996,
+          "ejemplos": [
+            "Mejillones",
+            "Antofagasta",
+            "Taltal"
+          ]
+        }
+      ],
+      "tabla_gpkg": "planes_reguladores_intercomunales"
+    },
+    "Planes Reguladores Metropolitanos": {
+      "frase": "Bajo la jurisdicción de Plan Regulador Metropolitano (PRM).",
+      "sufijo": "[Indicar Zona Metropolitana. Respetar densidades, áreas verdes y macrozonas definidas.]",
+      "solo_nc": false,
+      "plantilla": "Bajo la jurisdicción de Plan Regulador Metropolitano (PRM) denominado «{nombre}», en el sector {sector}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 0.999,
+          "ejemplos": [
+            "ZIS Interes Silvoagropecuario",
+            "ZVN De Valor Natural",
+            "ZAA Asentamientos Agrícolas"
+          ]
+        },
+        {
+          "campo": "sector",
+          "pct_llena": 0.985,
+          "ejemplos": [
+            "San Jeronimo",
+            "Cerro Puntudo Norte",
+            "El Peumito"
+          ]
+        }
+      ],
+      "tabla_gpkg": "planes_reguladores_metropolitanos"
+    },
+    "Planes Seccionales": {
+      "frase": "Existe un Plan Seccional vigente en el área.",
+      "sufijo": "[Verificar detalles específicos de diseño urbano y edificación local. Indicar nombre del Seccional]",
+      "solo_nc": false,
+      "plantilla": "Existe un Plan Seccional vigente en el área denominado «{nombre}», en el sector {localidad}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "ZE4c Zona de equipamiento recreacional turístico",
+            "ZM2 Zona recreativa mixta recreativa/turística",
+            "ZU1 Zona residencial de alta densidad"
+          ]
+        },
+        {
+          "campo": "localidad",
+          "pct_llena": 0.954,
+          "ejemplos": [
+            "La Chimba",
+            "La Negra",
+            "Calama"
+          ]
+        }
+      ],
+      "tabla_gpkg": "planes_seccionales"
+    },
+    "Zonificación Uso del Borde Costero": {
+      "frase": "Área con Zonificación de Uso del Borde Costero.",
+      "sufijo": "[Verificar compatibilidad de usos preferentes en la Política Nacional del Borde Costero. Indicar uso preferente]",
+      "solo_nc": false,
+      "plantilla": "Área con Zonificación de Uso del Borde Costero denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Zona Preferencial para la preservacion, sujeta a estudios",
+            "Zona Preferencial para el turismo",
+            "Zona Preferencial para la conservacion"
+          ]
+        }
+      ],
+      "tabla_gpkg": "zonificacion_uso_del_borde_costero"
+    },
+    "Límites Urbanos": {
+      "frase": "El sector se encuentra al interior del Límite Urbano.",
+      "sufijo": "[No aplica el D.L. 3516 sobre división de predios rústicos. Rige la LGUC.]",
+      "solo_nc": false,
+      "plantilla": "El sector se encuentra al interior del Límite Urbano en el sector {localidad}.",
+      "campos_narrativos": [
+        {
+          "campo": "localidad",
+          "pct_llena": 0.705,
+          "ejemplos": [
+            "<NA>",
+            "Chada",
+            "Huelquén"
+          ]
+        }
+      ],
+      "tabla_gpkg": "limites_urbanos"
+    },
+    "___VARIABLES_AMBIENTALES___": {},
+    "Vegas Protegidas": {
+      "frase": "Se identifica superposición con Vegas Protegidas.",
+      "sufijo": "[Prohibición de alterar el flujo hídrico según Código de Aguas. Indicar nombre de la vega]",
+      "solo_nc": false,
+      "plantilla": "Se identifica superposición con Vegas Protegidas denominado «{nombre}», de tipo {categoria}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Michincha",
+            "Aguas Calientes 6",
+            "Tocomar"
+          ]
+        },
+        {
+          "campo": "categoria",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Normativa",
+            "Normativo"
+          ]
+        }
+      ],
+      "tabla_gpkg": "vegas_protegidas"
+    },
+    "Acuíferos Protegidos": {
+      "frase": "El área se emplaza sobre Acuíferos Protegidos.",
+      "sufijo": "[Restricciones a la extracción de aguas y pozos según DGA. Indicar sector del acuífero]",
+      "solo_nc": false,
+      "plantilla": "El área se emplaza sobre Acuíferos Protegidos denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Michincha",
+            "Oyape, Baltinache, Cejas, Yona Grande, Los Pantanos, Tujlirea, Tambillo, Olar, Tapar, Carvajal, Quelana",
+            "Topain, Paicato, Paniri, Turi, Topain, Huiculunche, Puente del Diablo, Lasana, Chiu-Chiu,"
+          ]
+        }
+      ],
+      "tabla_gpkg": "acuiferos_protegidos"
+    },
+    "Áreas de prohibición de caza": {
+      "frase": "El territorio cuenta con prohibición de caza.",
+      "sufijo": "[Cualquier intervención debe cautelar la preservación de la fauna local (SAG).]",
+      "solo_nc": false,
+      "plantilla": "El territorio cuenta con prohibición de caza denominado «{nombre}», (Decreto/Resolución {decreto}).",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Lago Budi-Lakkénmapu, Zonas de Puerto Saavedra, Ríos Imperial y Mocul",
+            "Desembocadura Río Huasco",
+            "Entreríos"
+          ]
+        },
+        {
+          "campo": "decreto",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "D.S. 748/2012",
+            "D.S. 27/1995",
+            "D.S. 40/2021"
+          ]
+        }
+      ],
+      "tabla_gpkg": "areas_de_prohibicion_de_caza"
+    },
+    "Áreas de Restricción y Zonas de Prohibición de Aguas Subterráneas/Acuíferos": {
+      "frase": "Se detecta Zona de Restricción de Aguas Subterráneas.",
+      "sufijo": "[Verificar disponibilidad de derechos de aprovechamiento consuntivos.]",
+      "solo_nc": false,
+      "plantilla": "Se detecta Zona de Restricción de Aguas Subterráneas denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Nilahue",
+            "Tinguiririca"
+          ]
+        }
+      ],
+      "tabla_gpkg": "restriccion_y_prohibicion_de_acuiferos"
+    },
+    "Bosque Nativo": {
+      "frase": "Se identifica presencia de Bosque Nativo.",
+      "sufijo": "[Toda intervención o corta requiere Plan de Manejo aprobado por CONAF (Ley 20.283). Describir nivel de cobertura o afectación]",
+      "solo_nc": false,
+      "plantilla": "Se identifica presencia de Bosque Nativo de tipo {tipo_fores}.",
+      "campos_narrativos": [
+        {
+          "campo": "tipo_fores",
+          "ejemplos": [
+            "Roble - Rauli - Coihue",
+            "Siempreverde",
+            "Prosopis tamarugo"
+          ]
+        }
+      ],
+      "tabla_gpkg": "bosque_nativo"
+    },
+    "Cuerpos de agua": {
+      "frase": "Presencia de Cuerpos de Agua identificada.",
+      "sufijo": "[Respetar fajas de protección de cauces naturales y bienes nacionales de uso público. Indicar nombre del cuerpo de agua]",
+      "solo_nc": false,
+      "plantilla": "Presencia de Cuerpos de Agua identificada denominado «{nombre}», de tipo {tipo}, con nivel de {nivel}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Salar de Tara",
+            "Laguna en Salar de Loyoques o Quisquiro",
+            "Salar de Atacama"
+          ]
+        },
+        {
+          "campo": "tipo",
+          "pct_llena": 0.674,
+          "ejemplos": [
+            "Salar",
+            "Laguna",
+            "Embalse"
+          ]
+        },
+        {
+          "campo": "nivel",
+          "pct_llena": 0.674,
+          "ejemplos": [
+            "3.0",
+            "1.0",
+            "0.0"
+          ]
+        }
+      ],
+      "tabla_gpkg": "cuerpos_de_agua"
+    },
+    "Declaración de Agotamiento": {
+      "frase": "Ubicado en cuenca con Declaración de Agotamiento.",
+      "sufijo": "[Limitación extrema para constituir nuevos derechos de agua.]",
+      "solo_nc": false,
+      "plantilla": "Ubicado en cuenca con Declaración de Agotamiento denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Río Loa y sus afluentes",
+            "Río Elqui y sus afluentes",
+            "Río Diguillin y sus afluentes"
+          ]
+        }
+      ],
+      "tabla_gpkg": "declaracion_de_agotamiento"
+    },
+    "Glaciares": {
+      "frase": "Se detecta proximidad o presencia de Glaciares.",
+      "sufijo": "[Zona de alta sensibilidad ambiental y protección hídrica. Presunción de restricción absoluta. Indicar nombre del glaciar]",
+      "solo_nc": false,
+      "plantilla": "Se detecta proximidad o presencia de Glaciares denominado «{nombre}», en la cuenca {nom_cuen}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "S/N",
+            "NEVADO QUETRUPILLAN",
+            "VOLCAN VILLARRICA"
+          ]
+        },
+        {
+          "campo": "nom_cuen",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "RIO LOA",
+            "FRONTERIZAS SALAR MICHINCHA-R.LOA",
+            "SALAR DE ATACAMA"
+          ]
+        }
+      ],
+      "tabla_gpkg": "glaciares"
+    },
+    "Humedales": {
+      "frase": "Se registra la presencia de ecosistema de Humedales.",
+      "sufijo": "[Requiere evaluar impacto ambiental y cumplimiento de leyes de protección (Ley 21.202).]",
+      "solo_nc": false,
+      "tabla_gpkg": "humedales",
+      "plantilla": "Se registra la presencia de ecosistema de Humedales de tipo {orden_4}.",
+      "campos_narrativos": [
+        {
+          "campo": "orden_4",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "LAGUNA",
+            "SALARES",
+            "ANDINOS"
+          ]
+        }
+      ]
+    },
+    "Planes de Prevención y/o Descontaminación Atmosférica": {
+      "frase": "Afecto a Plan de Descontaminación Atmosférica (PDA).",
+      "sufijo": "[Considerar restricciones a emisiones, calefacción y actividades industriales. Indicar nombre del PDA]",
+      "solo_nc": false,
+      "plantilla": "Afecto a Plan de Descontaminación Atmosférica (PDA) de tipo {tip_pln}.",
+      "campos_narrativos": [
+        {
+          "campo": "tip_pln",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Descontaminación y Prevención",
+            "Descontaminación",
+            "Prevención"
+          ]
+        }
+      ],
+      "tabla_gpkg": "planes_de_prevencion_y_o_descontaminacion_atmosferica"
+    },
+    "Salares": {
+      "frase": "El inmueble se ubica en ecosistema de Salar.",
+      "sufijo": "[Ecosistema frágil con protección de cuencas hídricas y minerales (Litio). Indicar nombre del salar]",
+      "solo_nc": false,
+      "plantilla": "El inmueble se ubica en ecosistema de Salar denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Salar de Imilac - Oeste",
+            "Salar de Punta Negra",
+            "Salar de Aguas Calientes Sur Sur o 4"
+          ]
+        }
+      ],
+      "tabla_gpkg": "salares"
+    },
+    "Zona Saturada o Latente": {
+      "frase": "Ubicado en Zona Saturada o Latente ambientalmente.",
+      "sufijo": "[Posible requerimiento de ingreso al SEIA para nuevos proyectos.]",
+      "solo_nc": false,
+      "tabla_gpkg": "zona_saturada_o_latente",
+      "plantilla": "Ubicado en Zona Saturada o Latente ambientalmente denominado «{nombre_zon}», de tipo {zona_decla}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre_zon",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Calama y su área circundante",
+            "Localidades de María Elena y Pedro de Valdivia"
+          ]
+        },
+        {
+          "campo": "zona_decla",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Saturada",
+            "Latente",
+            "Saturada / Latente"
+          ]
+        }
+      ]
+    },
+    "___VARIABLES_CONSERVACION___": {},
+    "Áreas marinas protegidas": {
+      "frase": "Se identifica superposición con Área Marina Protegida.",
+      "sufijo": "[Restricciones de uso según el plan de manejo vigente y Ley de Pesca. Indicar nombre del área]",
+      "solo_nc": false,
+      "tabla_gpkg": "areas_marinas_protegidas",
+      "plantilla": "Se identifica superposición con Área Marina Protegida denominado «{rep_subpesca2_adm_ucb_cons_ssp_t_amp_nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "rep_subpesca2_adm_ucb_cons_ssp_t_amp_nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "LA RINCONADA",
+            "ISLAS CHOROS DAMAS",
+            "ISLA CHAÑARAL"
+          ]
+        }
+      ]
+    },
+    "Bienes Nacionales Protegidos": {
+      "frase": "Ubicado en un Bien Nacional Protegido (BNP).",
+      "sufijo": "[Destinado a conservación y uso sustentable. No enajenable. Indicar nombre del BNP]",
+      "solo_nc": false,
+      "plantilla": "Ubicado en un Bien Nacional Protegido (BNP) (Decreto/Resolución {decreto}).",
+      "campos_narrativos": [
+        {
+          "campo": "decreto",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "N° 1524 DE 2010",
+            "N° 664 DE 2007",
+            "N° 663 DE 2007"
+          ]
+        },
+        {
+          "campo": "nombre_uni",
+          "pct_llena": 1.0
+        }
+      ],
+      "tabla_gpkg": "bienes_nacionales_protegidos",
+      "condiciones": [
+        {
+          "campo": "HOMOLOGA",
+          "contiene": "SI",
+          "plantilla": "Ubicado en un Bien Nacional Protegido (BNP) «{nombre_uni}» (Decreto/Resolución {decreto}). El inmueble actualmente destinado al Ministerio de Bienes Nacionales con categoría de Bien Nacional Protegido se encuentra en proceso de recategorización y homologación según lo que indica la Ley N° 21.600, por lo que pertenecerá de manera plena y estandarizada al Sistema Nacional de Áreas Protegidas (SNAP) bajo administración del Servicio de Biodiversidad y Áreas Protegidas (SBAP).",
+          "sufijo": ""
+        }
+      ]
+    },
+    "Reservas de la Biósfera": {
+      "frase": "Se emplaza en Reserva de la Biósfera (UNESCO).",
+      "sufijo": "[Promover la conservación y el desarrollo sustentable en la zona de amortiguación. Indicar nombre de la reserva]",
+      "solo_nc": false,
+      "plantilla": "Se emplaza en Reserva de la Biósfera (UNESCO) denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Araucarias",
+            "Bosques Templados Lluviosos",
+            "Laguna San Rafael"
+          ]
+        }
+      ],
+      "tabla_gpkg": "reservas_de_la_biosfera"
+    },
+    "Santuario de la Naturaleza": {
+      "frase": "El área se encuentra inserta en Santuario de la Naturaleza.",
+      "sufijo": "[Territorio protegido por valor ecosistémico; requiere autorización del CMN para obras. Indicar nombre del Santuario]",
+      "solo_nc": false,
+      "tabla_gpkg": "santuario_de_la_naturaleza",
+      "plantilla": "El área se encuentra inserta en Santuario de la Naturaleza denominado «{orig_name}».",
+      "campos_narrativos": [
+        {
+          "campo": "orig_name",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Valle de La Luna y parte de la Sierra Orbate",
+            "Laguna Tebenquiche",
+            "Aguada La Chimba"
+          ]
+        }
+      ]
+    },
+    "Sitios Prioritarios de Conservación": {
+      "frase": "Identificado como Sitio Prioritario de Conservación de la Biodiversidad.",
+      "sufijo": "[Valor ecológico relevante para la estrategia regional. Evaluar ingreso al SEIA. Indicar nombre del sitio]",
+      "solo_nc": false,
+      "plantilla": "Identificado como Sitio Prioritario de Conservación de la Biodiversidad denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Desembocadura Ri­o Loa",
+            "Salar de Michincha",
+            "Salar de Atacama"
+          ]
+        }
+      ],
+      "tabla_gpkg": "sitios_prioritarios_de_conservacion"
+    },
+    "Sitios Ramsar": {
+      "frase": "Área catalogada como Humedal de Importancia Internacional (Ramsar).",
+      "sufijo": "[Compromisos internacionales de uso racional y conservación. Indicar nombre del sitio Ramsar]",
+      "solo_nc": false,
+      "tabla_gpkg": "sitios_ramsar",
+      "plantilla": "Área catalogada como Humedal de Importancia Internacional (Ramsar) denominado «{orig_name}».",
+      "campos_narrativos": [
+        {
+          "campo": "orig_name",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Salar de Tara",
+            "Sistema Hidrológico de Soncor",
+            "Aguas Calientes IV"
+          ]
+        }
+      ]
+    },
+    "SNAP": {
+      "frase": "Ubicado al interior del Sistema Nacional de Áreas Protegidas (SNAP).",
+      "sufijo": "[Sujeto a la implementación de la Ley N° 21.600 (SBAP) y planes de manejo. Indicar unidad del SNAP]",
+      "solo_nc": false,
+      "plantilla": "Ubicado al interior del Sistema Nacional de Áreas Protegidas (SNAP) de tipo {categoria}, (Decreto/Resolución {decreto}).",
+      "campos_narrativos": [
+        {
+          "campo": "categoria",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Parque Nacional",
+            "Reserva Nacional",
+            "Monumento Natural"
+          ]
+        },
+        {
+          "campo": "decreto",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "N° 5 de 2010",
+            "N° 7 de 1984; N° 527 de 1985; N° 585 de 1987",
+            "N° 71 de 1988"
+          ]
+        }
+      ],
+      "tabla_gpkg": "snap"
+    },
+    "Humedales urbanos": {
+      "frase": "Se identifica presencia de Humedal Urbano declarado (Ley 21.202).",
+      "sufijo": "[Restricciones específicas municipales para la protección del ecosistema. Indicar nombre del humedal]",
+      "solo_nc": false,
+      "plantilla": "Se identifica presencia de Humedal Urbano declarado (Ley 21.202) denominado «{nombre}», (Decreto/Resolución {resolucion}).",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Aguada La Chimba",
+            "Salar del Carmen",
+            "vertiente de la chimba norte"
+          ]
+        },
+        {
+          "campo": "resolucion",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "R.E. N°0787/2021",
+            "R.E. N°0215/2022",
+            "R.E. N°0067/ 2023"
+          ]
+        }
+      ],
+      "tabla_gpkg": "humedales_urbanos"
+    },
+    "___VARIABLES_INDIGENAS___": {},
+    "Asociaciones Indígenas": {
+      "frase": "Presencia de Asociaciones Indígenas en el sector.",
+      "sufijo": "[Considerar para procesos de vinculación territorial y pertinencia cultural. Indicar nombre de la asociación]",
+      "solo_nc": false,
+      "plantilla": "Presencia de Asociaciones Indígenas en el sector denominado «{nombre}», asociado a {pueblo}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "KONUNKO LAFKEN",
+            "AYYEN MAPU DE CALOF CENTRO",
+            "EPU LOF RUKA CALOF RANCO"
+          ]
+        },
+        {
+          "campo": "pueblo",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "MAPUCHE",
+            "AYMARA",
+            "MULTICULTURAL"
+          ]
+        }
+      ],
+      "tabla_gpkg": "asociaciones_indigenas"
+    },
+    "Comunidades Indígenas": {
+      "frase": "Se identifica superposición con tierras de Comunidades Indígenas.",
+      "sufijo": "[Verificar aplicabilidad del Convenio 169 OIT y Ley Indígena 19.253. Indicar nombre de la comunidad]",
+      "solo_nc": false,
+      "plantilla": "Se identifica superposición con tierras de Comunidades Indígenas asociado a {comunidad}.",
+      "campos_narrativos": [
+        {
+          "campo": "comunidad",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "COMUNIDAD ATACAMEÑA DE CASPANA",
+            "COMUNIDAD ATACAMEÑA DE CONCHI-VIEJO",
+            "COMUNIDAD ATACAMEÑA DE LASANA"
+          ]
+        }
+      ],
+      "tabla_gpkg": "comunidades_indigenas"
+    },
+    "Fondo de Tierras Indígenas Art. 20a": {
+      "frase": "Afecto a Fondo de Tierras Indígenas (Art. 20a - Subsidio).",
+      "sufijo": "[Tierras adquiridas por CONADI. Verificar restricciones de enajenación (25 años).]",
+      "solo_nc": false,
+      "plantilla": "Afecto a Fondo de Tierras Indígenas (Art. 20a - Subsidio) denominado «{nombre}», (Decreto/Resolución {resolucion}).",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 0.955,
+          "ejemplos": [
+            "<NA>",
+            "Parte Comunidad Santos López Lican",
+            "EDUARDO"
+          ]
+        },
+        {
+          "campo": "resolucion",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "26",
+            "0",
+            "2184"
+          ]
+        }
+      ],
+      "tabla_gpkg": "fondo_de_tierras_indigenas_art_20a"
+    },
+    "Títulos de Merced": {
+      "frase": "Se identifica superposición con Títulos de Merced históricos.",
+      "sufijo": "[Propiedad indígena con protección especial. Requiere estudio de títulos exhaustivo. Indicar número o nombre del título]",
+      "solo_nc": false,
+      "plantilla": "Se identifica superposición con Títulos de Merced históricos asociado a {comunidad}.",
+      "campos_narrativos": [
+        {
+          "campo": "comunidad",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Martin Himiu",
+            "Francisco Linco",
+            "Eugenio Araya Hueliñir"
+          ]
+        }
+      ],
+      "tabla_gpkg": "titulos_de_merced"
+    },
+    "Áreas de Desarrollo Indígena": {
+      "frase": "Emplazado en Área de Desarrollo Indígena (ADI).",
+      "sufijo": "[Focalización de recursos para el desarrollo originario. Prioridad en la gestión. Indicar nombre del ADI]",
+      "solo_nc": false,
+      "plantilla": "Emplazado en Área de Desarrollo Indígena (ADI) denominado «{nombre}», asociado a {etnia}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "ALTO EL LOA",
+            "ATACAMA LA GRANDE",
+            "LAGO BUDI"
+          ]
+        },
+        {
+          "campo": "etnia",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "ATACAMEÑA-QUECHUA",
+            "ATACAMEÑA",
+            "MAPUCHE"
+          ]
+        }
+      ],
+      "tabla_gpkg": "areas_de_desarrollo_indigena",
+      "condiciones": [
+        {
+          "campo": "nombre",
+          "contiene": "TE PITO O TE HENUA",
+          "plantilla": "Al estar el inmueble dentro del ADI Te Pito O Te Henua, el Expediente cumple en poseer aprobación de CODEIPA en Sesión Extraordinaria año {anio_sesion}.",
+          "sufijo": "",
+          "editables": [
+            "anio_sesion"
+          ],
+          "descripcion": "Isla de Pascua: el año de sesión lo completa el analista (campo editable)."
+        }
+      ]
+    },
+    "Fondo de Tierras Indígenas Art. 20b": {
+      "frase": "Afecto a Fondo de Tierras Indígenas (Art. 20b - Conflicto).",
+      "sufijo": "[Tierras en proceso de reivindicación o traspaso. Alta sensibilidad social.]",
+      "solo_nc": false,
+      "plantilla": "Afecto a Fondo de Tierras Indígenas (Art. 20b - Conflicto) (Decreto/Resolución {resolucion}), en estado {estado}, en el sector {sector}.",
+      "campos_narrativos": [
+        {
+          "campo": "resolucion",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "26",
+            "238",
+            "53"
+          ]
+        },
+        {
+          "campo": "estado",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Revisados y Validados",
+            "<NA>"
+          ]
+        },
+        {
+          "campo": "sector",
+          "pct_llena": 0.445,
+          "ejemplos": [
+            "Amasa",
+            "LOTE 10 COMUNIDAD MAHUIDANCHE",
+            "Huitranlebu"
+          ]
+        }
+      ],
+      "tabla_gpkg": "fondo_de_tierras_indigenas_art_20b"
+    },
+    "Espacios Costeros Marinos Protegidos para Pueblos Indígenas (ECMPO)": {
+      "frase": "Se detecta solicitud o vigencia de ECMPO (Ley Lafkenche).",
+      "sufijo": "[Suspende el otorgamiento de concesiones hasta su resolución final. Indicar estado de la tramitación]",
+      "solo_nc": false,
+      "tabla_gpkg": "espacios_costeros_marinos_protegidos_para_pueblos_indigenas_ecmpo",
+      "plantilla": "Se detecta solicitud o vigencia de ECMPO (Ley Lafkenche) denominado «{rep_subpesca2_adm_uai_aind_ssp_t_ecmpo_nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "rep_subpesca2_adm_uai_aind_ssp_t_ecmpo_nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "BUDI-TOLTÉN",
+            "PILCOMAÑI",
+            "MISISSIPI"
+          ]
+        }
+      ]
+    },
+    "___VARIABLES_RIESGO___": {},
+    "Áreas de peligro por actividad volcánica: puntos de encuentro": {
+      "frase": "Proximidad a Puntos de Encuentro volcánico.",
+      "sufijo": "[Información clave para planes de emergencia y evacuación.]",
+      "solo_nc": false,
+      "plantilla": "Proximidad a Puntos de Encuentro volcánico denominado «{nombre}», de tipo {tipo}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Sede Escorial",
+            "Villa Mirador",
+            "Sede Meli"
+          ]
+        },
+        {
+          "campo": "tipo",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "PET",
+            "PE"
+          ]
+        }
+      ],
+      "tabla_gpkg": "areas_de_peligro_por_actividad_volcanica_puntos_de_encuentro"
+    },
+    "Áreas de Riesgo de Tsunami: puntos de encuentro": {
+      "frase": "Cercanía a Puntos de Encuentro por Tsunami.",
+      "sufijo": "[Considerar en protocolos de seguridad y no obstaculizar accesos.]",
+      "solo_nc": false,
+      "plantilla": "Cercanía a Puntos de Encuentro por Tsunami denominado «{nombre}», de tipo {tipo}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 0.981,
+          "ejemplos": [
+            "PE PAZUCAR1",
+            "PE Aduana Dese",
+            "PE AZUCAR2"
+          ]
+        },
+        {
+          "campo": "tipo",
+          "pct_llena": 0.996,
+          "ejemplos": [
+            "PE",
+            "PET",
+            "<NA>"
+          ]
+        }
+      ],
+      "tabla_gpkg": "areas_de_riesgo_de_tsunami_puntos_de_encuentro"
+    },
+    "Elementos costeros expuestos": {
+      "frase": "Se identifican Elementos Costeros Expuestos.",
+      "sufijo": "[Alta vulnerabilidad ante marejadas y erosión costera.]",
+      "solo_nc": false,
+      "plantilla": "Se identifican Elementos Costeros Expuestos denominado «{nombre}», de tipo {tipo}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Punta Arenas",
+            "Quebrada Onda",
+            "Urcu"
+          ]
+        },
+        {
+          "campo": "tipo",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Población",
+            "Infraestructura",
+            "Equipamiento"
+          ]
+        }
+      ],
+      "tabla_gpkg": "elementos_costeros_expuestos"
+    },
+    "Ranking de peligrosidad de volcanes activos": {
+      "frase": "Ubicado en zona de influencia de volcán activo según Ranking SERNAGEOMIN.",
+      "sufijo": "[Revisar alertas vigentes y mapas de peligro específicos. Indicar nombre del volcán]",
+      "solo_nc": false,
+      "plantilla": "Ubicado en zona de influencia de volcán activo según Ranking SERNAGEOMIN de tipo {categoria}.",
+      "campos_narrativos": [
+        {
+          "campo": "categoria",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "1",
+            "3",
+            "4"
+          ]
+        }
+      ],
+      "tabla_gpkg": "ranking_de_peligrosidad_de_volcanes_activos"
+    },
+    "Remociones en masa": {
+      "frase": "Áreas susceptibles a Remociones en Masa (Aluviones/Derrumbes).",
+      "sufijo": "[Peligro geológico. Factor limitante para la ocupación humana. Describir nivel de susceptibilidad]",
+      "solo_nc": false,
+      "plantilla": "Áreas susceptibles a Remociones en Masa (Aluviones/Derrumbes) de tipo {subtipo}.",
+      "campos_narrativos": [
+        {
+          "campo": "subtipo",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Deslizamiento, deformaciones de ladera y propagaciones",
+            "Flujos",
+            "Caidas y volcamientos"
+          ]
+        }
+      ],
+      "tabla_gpkg": "remociones_en_masa"
+    },
+    "Áreas de peligro por actividad volcánica: vías de evacuación": {
+      "frase": "Cruce con Vías de Evacuación volcánica oficiales.",
+      "sufijo": "[Prohibición de cierre o interrupción del tránsito (SENAPRED).]",
+      "solo_nc": false,
+      "tabla_gpkg": "areas_de_peligro_por_actividad_volcanica_vias_de_evacuacion",
+      "plantilla": "Cruce con Vías de Evacuación volcánica oficiales asociado al volcán {volcan}.",
+      "campos_narrativos": [
+        {
+          "campo": "volcan",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Llaima",
+            "Antuco",
+            "Chaitén"
+          ]
+        }
+      ]
+    },
+    "Áreas de Riesgo de Tsunami: línea de seguridad": {
+      "frase": "Ubicado respecto a la Línea de Seguridad de Tsunami.",
+      "sufijo": "[Define la zona segura sobre la cota de inundación para evacuación.]",
+      "solo_nc": false,
+      "plantilla": "Ubicado respecto a la Línea de Seguridad de Tsunami de tipo {tipo}.",
+      "campos_narrativos": [
+        {
+          "campo": "tipo",
+          "pct_llena": 0.975,
+          "ejemplos": [
+            "Línea de Seguridad"
+          ]
+        }
+      ],
+      "tabla_gpkg": "areas_de_riesgo_de_tsunami_linea_de_seguridad"
+    },
+    "Áreas de Riesgo de Tsunami: vías de evacuación": {
+      "frase": "Cruce con Vías de Evacuación por tsunami.",
+      "sufijo": "[Factor crítico para la seguridad. Mantener despejadas.]",
+      "solo_nc": false,
+      "plantilla": "Cruce con Vías de Evacuación por tsunami denominado «{name}».",
+      "campos_narrativos": [
+        {
+          "campo": "name",
+          "pct_llena": 0.948,
+          "ejemplos": [
+            "2",
+            "1",
+            "6"
+          ]
+        }
+      ],
+      "tabla_gpkg": "areas_de_riesgo_de_tsunami_vias_de_evacuacion"
+    },
+    "Áreas costeras expuestas a impactos por cambio climático": {
+      "frase": "Área expuesta a Impactos por Cambio Climático (Nivel del mar/Oleaje).",
+      "sufijo": "[Considerar vulnerabilidad a largo plazo para infraestructura fija. Describir nivel de exposición]",
+      "solo_nc": false,
+      "tabla_gpkg": "areas_costeras_expuestas_a_impactos_por_cambio_climatico"
+    },
+    "Áreas de peligro por actividad volcánica: áreas de peligro": {
+      "frase": "El inmueble se ubica en Área de Peligro Volcánico (Lava/Lahares).",
+      "sufijo": "[Debe ser evaluado por SERNAGEOMIN para determinar la viabilidad de uso.]",
+      "solo_nc": false,
+      "plantilla": "El inmueble se ubica en Área de Peligro Volcánico (Lava/Lahares), categorizado como {peligro}.",
+      "campos_narrativos": [
+        {
+          "campo": "peligro",
+          "pct_llena": 1.0,
+          "reducir": "sort_desc",
+          "orden": [
+            "Área Susceptible a Peligros Volcánicos",
+            "Bajo",
+            "Medio",
+            "Alto",
+            "Flujos piroclásticos"
+          ],
+          "ejemplos": [
+            "Bajo",
+            "Medio",
+            "Alto",
+            "Flujos piroclásticos"
+          ]
+        }
+      ],
+      "tabla_gpkg": "areas_de_peligro_por_actividad_volcanica_areas_de_peligro"
+    },
+    "Áreas de Riesgo de Tsunami: área a evacuar": {
+      "frase": "Ubicado dentro de Área a Evacuar por Tsunami (Zona de Inundación).",
+      "sufijo": "[Zona de riesgo vital ante eventos sísmicos mayores.]",
+      "solo_nc": false,
+      "plantilla": "Ubicado dentro de Área a Evacuar por Tsunami (Zona de Inundación) en el sector {sector}.",
+      "campos_narrativos": [
+        {
+          "campo": "sector",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Caleta Paquica",
+            "Caleta Punta Arenas",
+            "Paposo"
+          ]
+        }
+      ],
+      "tabla_gpkg": "areas_de_riesgo_de_tsunami_area_a_evacuar"
+    },
+    "Cartas de inundación por tsunami": {
+      "frase": "Se presenta riesgo ante ocurrencia de tsunamis (Carta SHOA).",
+      "sufijo": "[Especialmente en áreas bajo la cota 30. Restringe habitabilidad permanente. Indicar si se encuentra sobre o bajo la cota 30]",
+      "solo_nc": false,
+      "plantilla": "Se presenta riesgo ante ocurrencia de tsunamis según Carta de Inundación por Tsunami (CITSU) del SHOA: {name}.",
+      "campos_narrativos": [
+        {
+          "campo": "name",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Profundidad de la inundación  0 a 1 m",
+            "Profundidad de la inundación  1 a 2 m",
+            "Profundidad de la inundación  2 a 4 m",
+            "Área Inundación Porvenir"
+          ]
+        }
+      ],
+      "tabla_gpkg": "cartas_de_inundacion_por_tsunami"
+    },
+    "Riesgo de incendios forestales": {
+      "frase": "El análisis de riesgo de incendios forestales clasifica el sector según su nivel de peligrosidad.",
+      "sufijo": "[Se requiere implementar medidas de mitigación y cortafuegos según normativa CONAF para los niveles detectados.]",
+      "solo_nc": false,
+      "plantilla": "El análisis de riesgo de incendios forestales clasifica el sector con nivel de peligrosidad {riesgo}.",
+      "campos_narrativos": [
+        {
+          "campo": "riesgo",
+          "pct_llena": 1.0,
+          "reducir": "sort_desc",
+          "orden": [
+            "Muy bajo",
+            "Bajo",
+            "Medio",
+            "Alto",
+            "Muy alto"
+          ],
+          "ejemplos": [
+            "Muy bajo",
+            "Bajo",
+            "Medio",
+            "Alto",
+            "Muy alto"
+          ]
+        }
+      ],
+      "tabla_gpkg": "riesgo_de_incendios_forestales"
+    },
+    "___TURISMO_PATRIMONIO___": {},
+    "Atractivos Turísticos Nacionales": {
+      "frase": "Proximidad a Atractivo Turístico Nacional.",
+      "sufijo": "[Potencial para proyectos de desarrollo turístico sustentable. Indicar nombre del atractivo]",
+      "solo_nc": false,
+      "plantilla": "Proximidad a Atractivo Turístico Nacional denominado «{nombre}», de tipo {categoria}, a cargo de {propiedad}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "DESEMBOCADURA RÍO LOA",
+            "MUSEO REGIONAL - ADUANA DE ANTOFAGASTA (MH)",
+            "ALDEA DE TULOR (MA)"
+          ]
+        },
+        {
+          "campo": "categoria",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "SITIOS NATURALES",
+            "MUSEOS MANIFESTACIONES CULTURALES Y LUGARES DE INTERÉS HISTÓRICO O CULTURAL",
+            "FOLKLORE"
+          ]
+        },
+        {
+          "campo": "propiedad",
+          "pct_llena": 0.966,
+          "ejemplos": [
+            "PÚBLICA",
+            "PÚBLICA-PRIVADA",
+            "PRIVADA"
+          ]
+        }
+      ],
+      "tabla_gpkg": "atractivos_turisticos_nacionales"
+    },
+    "Monumentos Históricos": {
+      "frase": "Se identifica superposición con Monumento Histórico.",
+      "sufijo": "[Protegido por Ley 17.288; cualquier intervención requiere autorización del CMN. Indicar nombre del monumento]",
+      "solo_nc": false,
+      "plantilla": "Se identifica superposición con Monumento Histórico denominado «{nombre}», (Decreto/Resolución {num_dec}).",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Iglesia de San Francisco de Chiu-Chiu",
+            "Iglesia y campanario de Caspana",
+            "Iglesia de San Pedro de Atacama"
+          ]
+        },
+        {
+          "campo": "num_dec",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "5058",
+            "1749",
+            "2017"
+          ]
+        }
+      ],
+      "tabla_gpkg": "monumentos_historicos"
+    },
+    "Rutas Patrimoniales: hitos": {
+      "frase": "Presencia de Hitos de Rutas Patrimoniales MBN.",
+      "sufijo": "[Se debe garantizar el acceso y puesta en valor del patrimonio. Indicar nombre del hito]",
+      "solo_nc": false,
+      "tabla_gpkg": "rutas_patrimoniales_hitos",
+      "plantilla": "Presencia de Hitos de Rutas Patrimoniales MBN en la ruta «{nom_ruta}».",
+      "campos_narrativos": [
+        {
+          "campo": "nom_ruta",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "ANTOFAGASTA. Fiestas Tradicionales",
+            "OASIS DEL DESIERTO DE ATACAMA",
+            "EX OFICINA SALITRERA CHACABUCO"
+          ]
+        }
+      ]
+    },
+    "Circuitos turísticos": {
+      "frase": "El área forma parte de Circuitos Turísticos locales.",
+      "sufijo": "[Otorga potencialidad para dinamizar la economía local. Indicar nombre del circuito]",
+      "solo_nc": false,
+      "tabla_gpkg": "circuitos_turisticos",
+      "plantilla": "El área forma parte de Circuitos Turísticos locales denominado «{circuito}».",
+      "campos_narrativos": [
+        {
+          "campo": "circuito",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Circuito Costero",
+            "Circuito Desierto y Arqueología",
+            "Circuito Minero Calama"
+          ]
+        }
+      ]
+    },
+    "Rutas Patrimoniales: circuitos": {
+      "frase": "Cruce con trazado de Circuitos de Rutas Patrimoniales.",
+      "sufijo": "[Promover el acceso público y señalética adecuada. Indicar nombre del circuito]",
+      "solo_nc": false,
+      "tabla_gpkg": "rutas_patrimoniales_circuitos",
+      "plantilla": "Cruce con trazado de Circuitos de Rutas Patrimoniales denominado «{circuito}».",
+      "campos_narrativos": [
+        {
+          "campo": "circuito",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Ruta San Pedro de Atacama",
+            "Ruta Chiu Chiu - Lasana",
+            "Circuito Punta Tortola"
+          ]
+        }
+      ]
+    },
+    "Destinos turísticos": {
+      "frase": "El sector forma parte de un destino turístico reconocido.",
+      "sufijo": "[Prioridad para la inversión y fomento productivo sectorial. Indicar nombre del destino]",
+      "solo_nc": false,
+      "plantilla": "El sector forma parte del destino turístico denominado «{nombre_des}», de tipo {catego_des}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre_des",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "San Pedro de Atacama",
+            "Antofagasta",
+            "Calama - Alto el Loa"
+          ]
+        },
+        {
+          "campo": "catego_des",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Consolidado",
+            "Emergente",
+            "Potencial"
+          ]
+        }
+      ],
+      "tabla_gpkg": "destinos_turisticos"
+    },
+    "Inmuebles de Conservación Histórica": {
+      "frase": "Identificado como Inmueble de Conservación Histórica (ICH).",
+      "sufijo": "[Regulado por el PRC; considerar restricciones de modificación de fachada/volumen. Indicar nombre del inmueble]",
+      "solo_nc": false,
+      "plantilla": "Identificado como Inmueble de Conservación Histórica (ICH) denominado «{nombre}», en el sector {sector}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 0.993,
+          "ejemplos": [
+            "Banco BHIF",
+            "Banco BICE",
+            "Banco de Concepción Ex Club Inglés"
+          ]
+        },
+        {
+          "campo": "sector",
+          "pct_llena": 0.539,
+          "ejemplos": [
+            "Sierra Gorda",
+            "Temuco",
+            "Huasco Bajo"
+          ]
+        }
+      ],
+      "tabla_gpkg": "inmuebles_de_conservacion_historica"
+    },
+    "Rutas Patrimoniales: ámbitos": {
+      "frase": "Incluido en Ámbitos de Rutas Patrimoniales.",
+      "sufijo": "[Contexto territorial de alto valor paisajístico y cultural.]",
+      "solo_nc": false,
+      "tabla_gpkg": "rutas_patrimoniales_ambitos",
+      "plantilla": "Incluido en Ámbitos de Rutas Patrimoniales denominado «{ambito}».",
+      "campos_narrativos": [
+        {
+          "campo": "ambito",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Isla Cautin",
+            "Centro Temuco",
+            "Barrio estacion"
+          ]
+        }
+      ]
+    },
+    "Zona de interés turístico": {
+      "frase": "Emplazado en Zona de Interés Turístico (ZOIT).",
+      "sufijo": "[Prioridad para proyectos de fomento al turismo y subsidios estatales. Indicar nombre de la ZOIT]",
+      "solo_nc": false,
+      "plantilla": "Emplazado en Zona de Interés Turístico (ZOIT) denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "ZOIT LONQUIMAY",
+            "ZOIT CURACAUTIN",
+            "ZOIT PANGUIPULLI"
+          ]
+        }
+      ],
+      "tabla_gpkg": "zona_de_interes_turistico"
+    },
+    "Monumento Histórico: area": {
+      "frase": "Se identifica superposición con un Monumento Histórico.",
+      "sufijo": "[El inmueble está protegido por la Ley N° 17.288; cualquier intervención o modificación requiere la autorización previa y expresa del Consejo de Monumentos Nacionales. Indicar nombre del monumento]",
+      "solo_nc": false
+    },
+    "Zona Típica o Pintoresca": {
+      "frase": "El área de estudio se emplaza sobre una Zona Típica o Pintoresca.",
+      "sufijo": "[De acuerdo a la Ley N° 17.288, para realizar construcciones, reparaciones o modificaciones en esta zona, se requiere el permiso previo del Consejo de Monumentos Nacionales. Indicar nombre de la zona]",
+      "solo_nc": false,
+      "plantilla": "El área de estudio se emplaza sobre una Zona Típica o Pintoresca denominado «{nombre}», (Decreto/Resolución {num_dec}).",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Las casas del ferrocarril de Antofagasta",
+            "Conjunto Patio Sur del Ferrocarril Antofagasta Bolivia",
+            "Campamento Minero de Chuquicamata"
+          ]
+        },
+        {
+          "campo": "num_dec",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "374",
+            "40",
+            "176"
+          ]
+        }
+      ],
+      "tabla_gpkg": "zona_tipica_o_pintoresca"
+    },
+    "___MINERIA___": {},
+    "Yacimientos": {
+      "frase": "Se detecta presencia de Yacimientos minerales.",
+      "sufijo": "[Considerar la coexistencia con actividades extractivas potenciales.]",
+      "solo_nc": false,
+      "plantilla": "Se detecta presencia de Yacimientos minerales denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Sierra Explotadora",
+            "Ciclón",
+            "Petronila"
+          ]
+        }
+      ],
+      "tabla_gpkg": "yacimientos"
+    },
+    "Instalaciones mineras": {
+      "frase": "Proximidad a Instalaciones Mineras activas o abandonadas.",
+      "sufijo": "[Verificar fajas de seguridad y posibles pasivos ambientales.]",
+      "solo_nc": false,
+      "plantilla": "Proximidad a Instalaciones Mineras activas o abandonadas de tipo {categoria}, en estado {estado}.",
+      "campos_narrativos": [
+        {
+          "campo": "categoria",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "CATEGORIA C",
+            "CATEGORIA D",
+            "SIN CATEGORIA"
+          ]
+        },
+        {
+          "campo": "estado",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "ACTIVA",
+            "PARALIZADA POR SANCION",
+            "INACTIVA"
+          ]
+        }
+      ],
+      "tabla_gpkg": "instalaciones_mineras"
+    },
+    "Estacamentos salitrales": {
+      "frase": "Identificados Estacamentos Salitrales en la zona.",
+      "sufijo": "[Valor histórico característico del patrimonio minero del norte.]",
+      "solo_nc": false,
+      "plantilla": "Identificados Estacamentos Salitrales en la zona denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "ESTACA D-460",
+            "ESTACA C-460",
+            "ESTACA B-451"
+          ]
+        }
+      ],
+      "tabla_gpkg": "estacamentos_salitrales"
+    },
+    "Lugares de interés científico": {
+      "frase": "Lugar de Interés Científico (Geológico) detectado.",
+      "sufijo": "[Valor para la investigación y conservación del patrimonio geológico.]",
+      "solo_nc": false,
+      "plantilla": "Lugar de Interés Científico (Geológico) detectado denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Área de Extensión ALMA 2",
+            "Área de Extensión CONICYT 2",
+            "Área de Extensión ALMA 1"
+          ]
+        }
+      ],
+      "tabla_gpkg": "lugares_de_interes_cientifico"
+    },
+    "Exploración minera": {
+      "frase": "Presencia de concesiones de Exploración Minera constituidas.",
+      "sufijo": "[Existe derecho preferente de terceros para actividades de cateo y prospección. Indicar titular o rol de la concesión si corresponde]",
+      "solo_nc": false,
+      "plantilla": "Presencia de concesiones de Exploración Minera constituidas denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "DONCOR 3",
+            "LDELECT 426",
+            "CATAN 1-B"
+          ]
+        }
+      ],
+      "tabla_gpkg": "exploracion_minera"
+    },
+    "Explotación minera": {
+      "frase": "Presencia de concesiones de Explotación Minera.",
+      "sufijo": "[Actividad extractiva con derechos reales constituidos. Limita uso superficial. Indicar titular o rol de la concesión si corresponde]",
+      "solo_nc": false,
+      "plantilla": "Presencia de concesiones de Explotación Minera denominado «{nombre}».",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "CHOCLO",
+            "PROGRESO",
+            "CALIFORNIA"
+          ]
+        }
+      ],
+      "tabla_gpkg": "explotacion_minera"
+    },
+    "___ENERGIA___": {},
+    "Almacenamiento de combustible": {
+      "frase": "Proximidad a zonas de Almacenamiento de Combustible.",
+      "sufijo": "[Respetar distancias de seguridad normativa SEC.]",
+      "solo_nc": false,
+      "plantilla": "Proximidad a zonas de Almacenamiento de Combustible denominado «{nombre}», a cargo de {propiedad}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "PLANTA ANTOFAGASTA",
+            "ANTOFAGASTA",
+            "CAMAP ANTOFAGASTA"
+          ]
+        },
+        {
+          "campo": "propiedad",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "ABASTIBLE S.A.",
+            "EMPRESAS LIPIGAS S.A",
+            "ENEX S.A."
+          ]
+        }
+      ],
+      "tabla_gpkg": "almacenamiento_de_combustible"
+    },
+    "Centrales de generación eléctrica": {
+      "frase": "Cercanía a Centrales de Generación Eléctrica.",
+      "sufijo": "[Infraestructura crítica. Verificar servidumbres y zonas de protección.]",
+      "solo_nc": false,
+      "plantilla": "Cercanía a Centrales de Generación Eléctrica denominado «{nombre}», de tipo {tipo}, a cargo de {propiedad}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "PARQUE EOLICO CALAMA",
+            "CERRO TIGRE",
+            "EOLICA TALTAL"
+          ]
+        },
+        {
+          "campo": "tipo",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "EOLICO",
+            "GEOTERMIA",
+            "FOTOVOLTAICO"
+          ]
+        },
+        {
+          "campo": "propiedad",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "ENGIE ENERGIA CHILE S.A.",
+            "AR CERRO TIGRE SPA",
+            "ENEL GREEN POWER CHILE"
+          ]
+        }
+      ],
+      "tabla_gpkg": "centrales_de_generacion_electrica"
+    },
+    "Potencial ERN Hidroeléctrico": {
+      "frase": "Se identifica Potencial ERN Hidroeléctrico.",
+      "sufijo": "[Aptitud territorial para el desarrollo de energía hídrica.]",
+      "solo_nc": false,
+      "tabla_gpkg": "potencial_ern_hidroelectrico"
+    },
+    "Subestaciones Eléctricas": {
+      "frase": "Proximidad a Subestaciones Eléctricas.",
+      "sufijo": "[Considerar servidumbres y restricciones por campo electromagnético.]",
+      "solo_nc": false,
+      "plantilla": "Proximidad a Subestaciones Eléctricas denominado «{nombre}», de tipo {subtipo}, en estado {estado}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "S/E CENTRAL TALTAL (ENEL GENERACION)",
+            "S/E PAPOSO",
+            "S/E TALTAL (ELECDA)"
+          ]
+        },
+        {
+          "campo": "subtipo",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "100",
+            "102",
+            "101"
+          ]
+        },
+        {
+          "campo": "estado",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "OPERATIVA",
+            "EN PRUEBAS"
+          ]
+        }
+      ],
+      "tabla_gpkg": "subestaciones_electricas"
+    },
+    "Terminales Marítimos": {
+      "frase": "Cercanía a Terminales Marítimos de energía.",
+      "sufijo": "[Infraestructura estratégica de abastecimiento energético.]",
+      "solo_nc": false,
+      "plantilla": "Cercanía a Terminales Marítimos de energía denominado «{nombre}», de tipo {tipo}, a cargo de {propiedad}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "PETROBRAS",
+            "GNL MEJILLONES",
+            "ELECTROANDINA"
+          ]
+        },
+        {
+          "campo": "tipo",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "MULTIPROPOSITO",
+            "GRANELES",
+            "LIQUIDO"
+          ]
+        },
+        {
+          "campo": "propiedad",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "SHELL CHILE S.A.C.I.",
+            "SOCIEDAD GNL MEJILLONES S.A.",
+            "ELECTROANDINA"
+          ]
+        }
+      ],
+      "tabla_gpkg": "terminales_maritimos"
+    },
+    "Gaseoducto": {
+      "frase": "Se detecta trazado de Gaseoducto.",
+      "sufijo": "[Prohibición absoluta de edificar sobre la faja de servidumbre (SEC).]",
+      "solo_nc": false
+    },
+    "Líneas de transmisión eléctrica": {
+      "frase": "Cruce o colindancia con Líneas de Transmisión Eléctrica.",
+      "sufijo": "[Respetar franja de seguridad y servidumbre eléctrica (Ley General de Servicios Eléctricos).]",
+      "solo_nc": false,
+      "plantilla": "Cruce o colindancia con Líneas de Transmisión Eléctrica denominado «{nombre}», de tipo {subtipo}, a cargo de {propiedad}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "LOS CHANGOS – KIMAL 500KV",
+            "LOS CHANGOS – PARINAS 500 KV",
+            "PARINAS – CUMBRE 500 KV"
+          ]
+        },
+        {
+          "campo": "subtipo",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "100",
+            "101",
+            "103"
+          ]
+        },
+        {
+          "campo": "propiedad",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "TRANSELEC S.A.",
+            "TRANSMISORA ELÉCTRICA DEL NORTE S.A.",
+            "AES ANDES S.A."
+          ]
+        }
+      ],
+      "tabla_gpkg": "lineas_de_transmision_electrica"
+    },
+    "Oleoducto": {
+      "frase": "Se detecta trazado de Oleoducto.",
+      "sufijo": "[Zona de seguridad estricta. Riesgo de contaminación y prohibición de obras.]",
+      "solo_nc": false
+    },
+    "Concesiones geotérmicas": {
+      "frase": "Presencia de Concesiones Geotérmicas.",
+      "sufijo": "[Derechos constituidos para aprovechamiento del calor del subsuelo. Indicar titular o estado]",
+      "solo_nc": false,
+      "plantilla": "Presencia de Concesiones Geotérmicas (Decreto/Resolución {decreto}), a cargo de {concesion}.",
+      "campos_narrativos": [
+        {
+          "campo": "decreto",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "D.S.  06  08-01-2009\nD. OFICIAL  07-02-2009",
+            "D.S. 246  27-12-2006\nD. OFICIAL  26-04-2007",
+            "D.S. 5  08-01-2009\nD. OFICIAL  07-02-2009"
+          ]
+        },
+        {
+          "campo": "concesion",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "APACHETA",
+            "EL TATIO",
+            "LA TORTA"
+          ]
+        }
+      ],
+      "tabla_gpkg": "concesiones_geotermicas"
+    },
+    "Concesiones onerosas de energía": {
+      "frase": "Afecto a Concesiones Onerosas para proyectos de Energía.",
+      "sufijo": "[Tierras fiscales ya comprometidas o en trámite para desarrollo energético. Indicar titular o estado]",
+      "solo_nc": false,
+      "plantilla": "Afecto a Concesiones Onerosas para proyectos de Energía (Decreto/Resolución {decreto}).",
+      "campos_narrativos": [
+        {
+          "campo": "decreto",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "Vigente (DEX E-113 / 09-03-2018)",
+            "Vigente (DEX 192 / 26-06-2020)",
+            "Vigente (DEX E-201 / 03-05-2017)"
+          ]
+        }
+      ],
+      "tabla_gpkg": "concesiones_onerosas_de_energia"
+    },
+    "PELP Eólico": {
+      "frase": "Variable PELP Eólico detectada.",
+      "sufijo": "[Zona priorizada en la Planificación Energética de Largo Plazo.]",
+      "solo_nc": false,
+      "tabla_gpkg": "pelp_eolico"
+    },
+    "PELP Geotérmico": {
+      "frase": "Variable PELP Geotérmico identificada.",
+      "sufijo": "[Zona de interés para la matriz energética nacional.]",
+      "solo_nc": false,
+      "tabla_gpkg": "pelp_geotermico"
+    },
+    "PELP Hidroeléctrico": {
+      "frase": "Variable PELP Hidroeléctrico detectada.",
+      "sufijo": "[Potencial reconocido en la planificación energética ministerial.]",
+      "solo_nc": false,
+      "tabla_gpkg": "pelp_hidroelectrico"
+    },
+    "PELP Solar CSP": {
+      "frase": "Intersecta con terreno de Potencial Solar CSP (PELP).",
+      "sufijo": "[Zona apta para Concentración Solar de Potencia.]",
+      "solo_nc": false,
+      "tabla_gpkg": "pelp_solar_csp"
+    },
+    "PELP Solar fotovoltaico": {
+      "frase": "Se intersecta con terreno de PELP Solar fotovoltaico.",
+      "sufijo": "[Alta aptitud para parques solares según planificación oficial.]",
+      "solo_nc": false,
+      "tabla_gpkg": "pelp_solar_fotovoltaico"
+    },
+    "Potencial ERN Eólico": {
+      "frase": "Se identifica Potencial ERN Eólico.",
+      "sufijo": "[Recurso de viento aprovechable para generación eléctrica.]",
+      "solo_nc": false,
+      "tabla_gpkg": "potencial_ern_eolico"
+    },
+    "Potencial ERN Geotérmico": {
+      "frase": "Se identifica Potencial ERN Geotérmico.",
+      "sufijo": "[Disponibilidad de recurso térmico en el subsuelo.]",
+      "solo_nc": false,
+      "tabla_gpkg": "potencial_ern_geotermico"
+    },
+    "Potencial ERN Solar CSP": {
+      "frase": "Intersecta con terreno de Potencial ERN Solar CSP.",
+      "sufijo": "[Radiación directa apta para tecnologías de concentración.]",
+      "solo_nc": false,
+      "tabla_gpkg": "potencial_ern_solar_csp"
+    },
+    "Potencial ERN Solar fotovoltaico": {
+      "frase": "Se intersecta con terreno de Potencial ERN Solar fotovoltaico.",
+      "sufijo": "[Condiciones óptimas para desarrollo de energía solar.]",
+      "solo_nc": false,
+      "tabla_gpkg": "potencial_ern_solar_fotovoltaico"
+    },
+    "Gasoductos": {
+      "frase": "Se identifica intersección o proximidad con trazado de Gasoductos.",
+      "sufijo": "[Respetar franjas de seguridad y servidumbres de ductos de gas. Indicar nombre/operador del gasoducto.]",
+      "solo_nc": false,
+      "tabla_gpkg": "gasoductos",
+      "plantilla": "Se identifica intersección o proximidad con trazado de Gasoductos denominado «{nombre}», a cargo de {propiedad}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "GASODUCTO 10 CALAFATE - BRC",
+            "GASODUCTO 12 CENTRO MEDICION ENAP - GASCO Y CENTRO DE ODORIZ",
+            "GASODUCTO 12 CULLEN - CALAFATE"
+          ]
+        },
+        {
+          "campo": "propiedad",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "ENAP MAGALLANES",
+            "ELECTROGAS",
+            "INNERGY"
+          ]
+        }
+      ]
+    },
+    "Oleoductos": {
+      "frase": "Se identifica intersección o proximidad con trazado de Oleoductos.",
+      "sufijo": "[Respetar franjas de seguridad y servidumbres de ductos de combustible. Indicar nombre/operador del oleoducto.]",
+      "solo_nc": false,
+      "tabla_gpkg": "oleoductos",
+      "plantilla": "Se identifica intersección o proximidad con trazado de Oleoductos denominado «{nombre}», a cargo de {propiedad}.",
+      "campos_narrativos": [
+        {
+          "campo": "nombre",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "SAN VICENTE",
+            "ESTENSSORO-PEDRALS",
+            "TRAMO OLEODUCTO N°1"
+          ]
+        },
+        {
+          "campo": "propiedad",
+          "pct_llena": 1.0,
+          "ejemplos": [
+            "TRASANDINO",
+            "ENAP REFINERIAS",
+            "ENAP MAGALLANES"
+          ]
+        }
+      ]
+    }
+  }
+}

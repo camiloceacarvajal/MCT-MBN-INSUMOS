@@ -1,0 +1,13 @@
+# --- nunca subir credenciales ---
+*.token
+*.secret
+.env
+credenciales*
+
+# --- temporales ---
+__pycache__/
+*.pyc
+~$*
+*.tmp
+Thumbs.db
+desktop.ini
