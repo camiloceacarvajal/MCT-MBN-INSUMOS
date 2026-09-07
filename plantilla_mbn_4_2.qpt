@@ -99,7 +99,7 @@
     <Option/>
    </customproperties>
   </LayoutObject>
- </LayoutItem><LayoutItem marginY="0" groupUuid="" position="8.1239,81.7612,mm" id="ROTULO NORTE" marginX="0" positionOnPage="8.1239,81.7612,mm" size="16.1854,3.2000,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" htmlState="0" labelText="UTM" type="65641" halign="4" zValue="50" outlineWidthM="0.3,mm" templateUuid="{00761598-ee86-46df-8a0f-3f1a044e7a63}" positionLock="false" uuid="{00761598-ee86-46df-8a0f-3f1a044e7a63}" excludeFromExports="0" background="false" valign="128">
+ </LayoutItem><LayoutItem marginY="0" groupUuid="" position="8.1239,77.8876,mm" id="ROTULO NORTE" marginX="0" positionOnPage="8.1239,77.8876,mm" size="16.1854,3.2000,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" htmlState="0" labelText="UTM" type="65641" halign="4" zValue="50" outlineWidthM="0.3,mm" templateUuid="{00761598-ee86-46df-8a0f-3f1a044e7a63}" positionLock="false" uuid="{00761598-ee86-46df-8a0f-3f1a044e7a63}" excludeFromExports="0" background="false" valign="128">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -514,7 +514,7 @@
     <Option/>
    </customproperties>
   </LayoutObject>
-  <text-style fontKerning="1" fontFamily="Microsoft PhagsPa" multilineHeight="1" fontSizeUnit="Point" fontStrikeout="0" fontWeight="400" multilineHeightUnit="Percentage" fontItalic="0" forcedBold="0" fontWordSpacing="0" tabStopDistance="80" forcedItalic="0" textColor="0,0,0,255,rgb:0,0,0,1" fontSizeMapUnitScale="3x:0,0,0,0,0,0" tabStopDistanceMapUnitScale="3x:0,0,0,0,0,0" namedStyle="Regular" previewBkgrdColor="255,255,255,255,rgb:1,1,1,1" stretchFactor="100" capitalization="0" blendMode="0" fontLetterSpacing="0.9375" fontUnderline="0" allowHtml="0" textOpacity="1" tabStopDistanceUnit="Point" fontSize="9" textOrientation="horizontal">
+  <text-style fontKerning="1" fontFamily="Microsoft PhagsPa" multilineHeight="1" fontSizeUnit="Point" fontStrikeout="0" fontWeight="400" multilineHeightUnit="Percentage" fontItalic="0" forcedBold="0" fontWordSpacing="0" tabStopDistance="80" forcedItalic="0" textColor="0,0,0,255,rgb:0,0,0,1" fontSizeMapUnitScale="3x:0,0,0,0,0,0" tabStopDistanceMapUnitScale="3x:0,0,0,0,0,0" namedStyle="Regular" previewBkgrdColor="255,255,255,255,rgb:1,1,1,1" stretchFactor="100" capitalization="0" blendMode="0" fontLetterSpacing="0.75" fontUnderline="0" allowHtml="0" textOpacity="1" tabStopDistanceUnit="Point" fontSize="9" textOrientation="horizontal">
    <families/>
    <text-buffer bufferJoinStyle="128" bufferDraw="0" bufferNoFill="1" bufferBlendMode="0" bufferSizeMapUnitScale="3x:0,0,0,0,0,0" bufferColor="255,255,255,255,rgb:1,1,1,1" bufferSize="1" bufferSizeUnits="MM" bufferOpacity="1"/>
    <text-mask maskOpacity="1" maskSize="1.5" maskType="0" maskSizeUnits="MM" maskSizeMapUnitScale="3x:0,0,0,0,0,0" maskedSymbolLayers="" maskJoinStyle="128" maskEnabled="0" maskSize2="1.5"/>
