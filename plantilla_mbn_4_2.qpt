@@ -256,7 +256,28 @@
      </Option>
     </data_defined_properties>
    </layer>
-   <layer class="SimpleFill" enabled="1" id="{cd6e31cd-699b-4766-977d-f39c94a915ca}" locked="0" pass="0">
+   <layer class="SimpleFill" enabled="1" id="halo-marcador" locked="0" pass="0">
+    <Option type="Map">
+     <Option name="border_width_map_unit_scale" type="QString" value="3x:0,0,0,0,0,0"/>
+     <Option name="color" type="QString" value="255,255,255,255,rgb:1,1,1,1"/>
+     <Option name="joinstyle" type="QString" value="bevel"/>
+     <Option name="offset" type="QString" value="0,0"/>
+     <Option name="offset_map_unit_scale" type="QString" value="3x:0,0,0,0,0,0"/>
+     <Option name="offset_unit" type="QString" value="MM"/>
+     <Option name="outline_color" type="QString" value="255,255,255,255,rgb:1,1,1,1"/>
+     <Option name="outline_style" type="QString" value="solid"/>
+     <Option name="outline_width" type="QString" value="0.9"/>
+     <Option name="outline_width_unit" type="QString" value="MM"/>
+     <Option name="style" type="QString" value="no"/>
+    </Option>
+    <data_defined_properties>
+     <Option type="Map">
+      <Option name="name" type="QString" value=""/>
+      <Option name="properties"/>
+      <Option name="type" type="QString" value="collection"/>
+     </Option>
+    </data_defined_properties>
+   </layer><layer class="SimpleFill" enabled="1" id="{cd6e31cd-699b-4766-977d-f39c94a915ca}" locked="0" pass="0">
     <Option type="Map">
      <Option name="border_width_map_unit_scale" type="QString" value="3x:0,0,0,0,0,0"/>
      <Option name="color" type="QString" value="205,20,31,255,rgb:0.8039216,0.0784314,0.1215686,1"/>
@@ -266,7 +287,7 @@
      <Option name="offset_unit" type="QString" value="MM"/>
      <Option name="outline_color" type="QString" value="205,20,31,255,rgb:0.8039216,0.0784314,0.1215686,1"/>
      <Option name="outline_style" type="QString" value="solid"/>
-     <Option name="outline_width" type="QString" value="0.2"/>
+     <Option name="outline_width" type="QString" value="0.4"/>
      <Option name="outline_width_unit" type="QString" value="MM"/>
      <Option name="style" type="QString" value="no"/>
     </Option>
@@ -875,7 +896,7 @@
    </customproperties>
   </LayoutObject>
  </LayoutItem>
- <LayoutItem background="false" blendMode="0" excludeFromExports="0" frame="false" frameJoinStyle="miter" groupUuid="" halign="1" htmlState="0" id="BLOQUE ESCALA" itemRotation="0" labelText="&lt;b>ESCALA DEL PLANO:&lt;/b> &#xa;&lt;b>FECHA DE ELABORACIÓN:&lt;/b> [%format_date(now(), 'dd/MM/yyyy')%]&#xa;&lt;b>REFERENCIA GEODÉSICA:&lt;/b> [% regexp_replace(array_first(string_to_array(@project_crs_description, ' / ')), ' [0-9][0-9][0-9][0-9]$', '') %]&#xa;&lt;b>PROYECCIÓN:&lt;/b> [% replace(array_last(string_to_array(@project_crs_description, ' / ')), 'zone ', '') %]" marginX="0" marginY="0" opacity="1" outlineWidthM="0.3,mm" position="183.39,295.961,mm" positionLock="false" positionOnPage="183.39,295.961,mm" referencePoint="7" size="49.842,24.9516,mm" templateUuid="{e3c78676-5802-4507-bc15-3787e3638177}" type="65641" uuid="{e3c78676-5802-4507-bc15-3787e3638177}" valign="128" visibility="1" zValue="9">
+ <LayoutItem background="false" blendMode="0" excludeFromExports="0" frame="false" frameJoinStyle="miter" groupUuid="" halign="1" htmlState="0" id="BLOQUE ESCALA" itemRotation="0" labelText="&lt;b&gt;ESCALA DEL PLANO:&lt;/b&gt; &#10;&lt;b&gt;FECHA DE ELABORACIÓN:&lt;/b&gt; [%format_date(now(), 'dd/MM/yyyy')%]&#10;&lt;b&gt;REFERENCIA GEODÉSICA:&lt;/b&gt; [% regexp_replace(array_first(string_to_array(@project_crs_description, ' / ')), ' [0-9][0-9][0-9][0-9]$', '') %]&#10;&lt;b&gt;PROYECCIÓN:&lt;/b&gt; [% replace(array_last(string_to_array(@project_crs_description, ' / ')), 'zone ', '') %]" marginX="0" marginY="0" opacity="1" outlineWidthM="0.3,mm" position="183.39,295.961,mm" positionLock="false" positionOnPage="183.39,295.961,mm" referencePoint="7" size="49.842,24.9516,mm" templateUuid="{e3c78676-5802-4507-bc15-3787e3638177}" type="65641" uuid="{e3c78676-5802-4507-bc15-3787e3638177}" valign="128" visibility="1" zValue="9">
   <FrameColor alpha="255" blue="0" green="0" red="0"/>
   <BackgroundColor alpha="255" blue="255" green="255" red="255"/>
   <LayoutObject>
@@ -1132,7 +1153,7 @@
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem background="false" blendMode="0" excludeFromExports="0" frame="false" frameJoinStyle="miter" groupUuid="" halign="4" htmlState="0" id="" itemRotation="0" labelText="MINISTERIO DE BIENES NACIONALES&#xa;DIVISIÓN DEL CATASTRO NACIONAL DE LOS BIENES DEL ESTADO" marginX="0" marginY="0" opacity="1" outlineWidthM="0.3,mm" position="40.6676,2.02678,mm" positionLock="false" positionOnPage="40.6676,2.02678,mm" referencePoint="0" size="114.114,17.5294,mm" templateUuid="{7045b729-502f-4da1-ba1f-bd99ed8046c8}" type="65641" uuid="{7045b729-502f-4da1-ba1f-bd99ed8046c8}" valign="128" visibility="1" zValue="5">
+ <LayoutItem background="false" blendMode="0" excludeFromExports="0" frame="false" frameJoinStyle="miter" groupUuid="" halign="4" htmlState="0" id="" itemRotation="0" labelText="MINISTERIO DE BIENES NACIONALES&#10;DIVISIÓN DEL CATASTRO NACIONAL DE LOS BIENES DEL ESTADO" marginX="0" marginY="0" opacity="1" outlineWidthM="0.3,mm" position="40.6676,2.02678,mm" positionLock="false" positionOnPage="40.6676,2.02678,mm" referencePoint="0" size="114.114,17.5294,mm" templateUuid="{7045b729-502f-4da1-ba1f-bd99ed8046c8}" type="65641" uuid="{7045b729-502f-4da1-ba1f-bd99ed8046c8}" valign="128" visibility="1" zValue="5">
   <FrameColor alpha="255" blue="0" green="0" red="0"/>
   <BackgroundColor alpha="255" blue="255" green="255" red="255"/>
   <LayoutObject>
