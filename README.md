@@ -72,8 +72,14 @@ medio bajar, o alterado en tránsito, nunca llega a producir un plano.
 
 Desde `QGIS_4.2/BANCO_PRUEBAS_4_2/`:
 
+Si lo que cambia es la **plantilla**, se edita `plantilla_mbn_4_2.qpt` en el
+diseñador de layouts de QGIS —ese archivo es el original— y se guarda encima
+de sí misma. **Nunca en QGIS 3.44**: esa versión reescribe los pesos de fuente
+en la escala vieja (50/75) y el plano sale descuadrado en 4.2.
+
+Después, en cualquier caso:
+
 ```bash
-py _corregir_plantilla.py    # regenera plantilla y logotipo si corresponde
 py _publicar_activos.py      # recalcula los sha256 y arma el paquete
 ```
 
