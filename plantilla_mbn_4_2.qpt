@@ -500,7 +500,7 @@
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem groupUuid="" mapUuid="" file="logo_mbn.png" position="1.4348,1.1334,mm" id="LOGO MBN" mode="1" pictureRotation="0" positionOnPage="1.4348,1.1334,mm" size="35.1689,34.6564,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" type="65640" zValue="22" outlineWidthM="0.3,mm" templateUuid="{4c91ffc9-58b1-4ea3-88c5-7f6f6f616463}" anchorPoint="0" positionLock="false" uuid="{4c91ffc9-58b1-4ea3-88c5-7f6f6f616463}" excludeFromExports="0" background="false" northMode="0" northOffset="0" resizeMode="0">
+ <LayoutItem groupUuid="" mapUuid="" file="logo_mbn.png" position="1.4348,1.1334,mm" id="LOGO MBN" mode="1" pictureRotation="0" positionOnPage="1.4348,1.1334,mm" size="35.1689,34.6564,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" type="65640" zValue="22" outlineWidthM="0.3,mm" templateUuid="{11e56e6d-4542-405a-bd47-04663682344c}" anchorPoint="0" positionLock="false" uuid="{11e56e6d-4542-405a-bd47-04663682344c}" excludeFromExports="0" background="false" northMode="0" northOffset="0" resizeMode="0">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -649,7 +649,7 @@
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem groupUuid="" position="0.6347,36.6641,mm" id="MARCO EXTERIOR" positionOnPage="0.6347,36.6641,mm" size="208.909,217.376,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" cornerRadiusMeasure="0,mm" frame="false" type="65643" zValue="14" outlineWidthM="0.3,mm" templateUuid="{0167af60-f169-4d3b-9f64-5744a2901509}" shapeType="1" positionLock="false" uuid="{0167af60-f169-4d3b-9f64-5744a2901509}" excludeFromExports="0" background="false">
+ <LayoutItem groupUuid="" position="0.6347,36.6641,mm" id="MARCO EXTERIOR" positionOnPage="0.6347,36.6641,mm" size="208.909,217.376,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" cornerRadiusMeasure="0,mm" frame="false" type="65643" zValue="14" outlineWidthM="0.3,mm" templateUuid="{efa67ffd-72e0-4458-b295-e7777d8f4270}" shapeType="1" positionLock="false" uuid="{efa67ffd-72e0-4458-b295-e7777d8f4270}" excludeFromExports="0" background="false">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -774,7 +774,7 @@
    </customproperties>
   </LayoutObject>
  </LayoutItem>
- <LayoutItem marginY="0" groupUuid="" position="183.3900,295.9608,mm" id="BLOQUE ESCALA" marginX="0" positionOnPage="183.3900,295.9608,mm" size="49.842,24.9516,mm" referencePoint="7" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" htmlState="0" labelText="Escala del plano: &#10;Fecha de elaboración: [%format_date(now(), 'dd/MM/yyyy')%]&#10;Referencia geodésica: [% array_first(string_to_array(@project_crs_description, ' / ')) %]&#10;Proyección: [% replace(array_last(string_to_array(@project_crs_description, ' / ')), 'zone ', '') %]" type="65641" halign="1" zValue="9" outlineWidthM="0.3,mm" templateUuid="{d55fd024-62c6-480b-976b-ed845cbc8bf3}" positionLock="false" uuid="{d55fd024-62c6-480b-976b-ed845cbc8bf3}" excludeFromExports="0" background="false" valign="128">
+ <LayoutItem marginY="0" groupUuid="" position="183.3900,295.9608,mm" id="BLOQUE ESCALA" marginX="0" positionOnPage="183.3900,295.9608,mm" size="49.842,24.9516,mm" referencePoint="7" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" htmlState="0" labelText="Escala del plano: &#10;Fecha de elaboración: [%format_date(now(), 'dd/MM/yyyy')%]&#10;Referencia geodésica: [% regexp_replace(array_first(string_to_array(@project_crs_description, ' / ')), ' [0-9][0-9][0-9][0-9]$', '') %]&#10;Proyección: [% replace(array_last(string_to_array(@project_crs_description, ' / ')), 'zone ', '') %]" type="65641" halign="1" zValue="9" outlineWidthM="0.3,mm" templateUuid="{d55fd024-62c6-480b-976b-ed845cbc8bf3}" positionLock="false" uuid="{d55fd024-62c6-480b-976b-ed845cbc8bf3}" excludeFromExports="0" background="false" valign="128">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -789,7 +789,7 @@
     <Option/>
    </customproperties>
   </LayoutObject>
-  <text-style fontKerning="1" fontFamily="Arial" multilineHeight="1.5" fontSizeUnit="Point" fontStrikeout="0" fontWeight="400" multilineHeightUnit="Percentage" fontItalic="0" forcedBold="0" fontWordSpacing="0.0625" tabStopDistance="80" forcedItalic="0" textColor="0,0,0,255,rgb:0,0,0,1" fontSizeMapUnitScale="3x:0,0,0,0,0,0" tabStopDistanceMapUnitScale="3x:0,0,0,0,0,0" namedStyle="Normal" previewBkgrdColor="255,255,255,255,rgb:1,1,1,1" stretchFactor="100" capitalization="0" blendMode="0" fontLetterSpacing="0.65625" fontUnderline="0" allowHtml="0" textOpacity="1" tabStopDistanceUnit="Point" fontSize="6.6" textOrientation="horizontal">
+  <text-style fontKerning="1" fontFamily="Arial" multilineHeight="1.5" fontSizeUnit="Point" fontStrikeout="0" fontWeight="400" multilineHeightUnit="Percentage" fontItalic="0" forcedBold="0" fontWordSpacing="0.0625" tabStopDistance="80" forcedItalic="0" textColor="0,0,0,255,rgb:0,0,0,1" fontSizeMapUnitScale="3x:0,0,0,0,0,0" tabStopDistanceMapUnitScale="3x:0,0,0,0,0,0" namedStyle="Normal" previewBkgrdColor="255,255,255,255,rgb:1,1,1,1" stretchFactor="100" capitalization="0" blendMode="0" fontLetterSpacing="0.65625" fontUnderline="0" allowHtml="0" textOpacity="1" tabStopDistanceUnit="Point" fontSize="7.1" textOrientation="horizontal">
    <families/>
    <text-buffer bufferJoinStyle="128" bufferDraw="0" bufferNoFill="1" bufferBlendMode="0" bufferSizeMapUnitScale="3x:0,0,0,0,0,0" bufferColor="255,255,255,255,rgb:1,1,1,1" bufferSize="1" bufferSizeUnits="MM" bufferOpacity="1"/>
    <text-mask maskOpacity="1" maskSize="1.5" maskType="0" maskSizeUnits="MM" maskSizeMapUnitScale="3x:0,0,0,0,0,0" maskedSymbolLayers="" maskJoinStyle="128" maskEnabled="0" maskSize2="1.5"/>
