@@ -500,7 +500,7 @@
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem groupUuid="" mapUuid="" file="logo_mbn.png" position="1.4348,1.1334,mm" id="LOGO MBN" mode="1" pictureRotation="0" positionOnPage="1.4348,1.1334,mm" size="35.1689,34.6564,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" type="65640" zValue="22" outlineWidthM="0.3,mm" templateUuid="{93bb6972-e20a-4579-b806-3ad7eb73c44f}" anchorPoint="0" positionLock="false" uuid="{93bb6972-e20a-4579-b806-3ad7eb73c44f}" excludeFromExports="0" background="false" northMode="0" northOffset="0" resizeMode="0">
+ <LayoutItem groupUuid="" mapUuid="" file="logo_mbn.png" position="1.4348,1.1334,mm" id="LOGO MBN" mode="1" pictureRotation="0" positionOnPage="1.4348,1.1334,mm" size="35.1689,34.6564,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" type="65640" zValue="22" outlineWidthM="0.3,mm" templateUuid="{15a73a1b-bdcb-4f58-a753-e3c87b26563e}" anchorPoint="0" positionLock="false" uuid="{15a73a1b-bdcb-4f58-a753-e3c87b26563e}" excludeFromExports="0" background="false" northMode="0" northOffset="0" resizeMode="0">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -649,7 +649,7 @@
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem groupUuid="" position="0.6347,36.6641,mm" id="MARCO EXTERIOR" positionOnPage="0.6347,36.6641,mm" size="208.909,217.376,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" cornerRadiusMeasure="0,mm" frame="false" type="65643" zValue="14" outlineWidthM="0.3,mm" templateUuid="{4a3fa443-504b-4f9f-baeb-cc262a8a0567}" shapeType="1" positionLock="false" uuid="{4a3fa443-504b-4f9f-baeb-cc262a8a0567}" excludeFromExports="0" background="false">
+ <LayoutItem groupUuid="" position="0.6347,36.6641,mm" id="MARCO EXTERIOR" positionOnPage="0.6347,36.6641,mm" size="208.909,217.376,mm" referencePoint="0" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" cornerRadiusMeasure="0,mm" frame="false" type="65643" zValue="14" outlineWidthM="0.3,mm" templateUuid="{829b1066-8367-4c90-8cce-33224231c7be}" shapeType="1" positionLock="false" uuid="{829b1066-8367-4c90-8cce-33224231c7be}" excludeFromExports="0" background="false">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -774,7 +774,7 @@
    </customproperties>
   </LayoutObject>
  </LayoutItem>
- <LayoutItem marginY="0" groupUuid="" position="183.3900,295.9608,mm" id="BLOQUE ESCALA" marginX="0" positionOnPage="183.3900,295.9608,mm" size="49.842,24.9516,mm" referencePoint="7" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" htmlState="0" labelText="Escala del plano: &#10;Fecha de elaboración: [%format_date(now(), 'dd/MM/yyyy')%]&#10;Referencia geodésica: [% regexp_replace(array_first(string_to_array(@project_crs_description, ' / ')), ' [0-9][0-9][0-9][0-9]$', '') %]&#10;Proyección: [% replace(array_last(string_to_array(@project_crs_description, ' / ')), 'zone ', '') %]" type="65641" halign="1" zValue="9" outlineWidthM="0.3,mm" templateUuid="{d55fd024-62c6-480b-976b-ed845cbc8bf3}" positionLock="false" uuid="{d55fd024-62c6-480b-976b-ed845cbc8bf3}" excludeFromExports="0" background="false" valign="128">
+ <LayoutItem marginY="0" groupUuid="" position="183.3900,295.9608,mm" id="BLOQUE ESCALA" marginX="0" positionOnPage="183.3900,295.9608,mm" size="49.842,24.9516,mm" referencePoint="7" opacity="1" itemRotation="0" visibility="1" frameJoinStyle="miter" blendMode="0" frame="false" htmlState="1" labelText="&lt;div style='line-height:190%;'&gt;Escala del plano: &lt;b&gt;&lt;/b&gt;&lt;br&gt;Fecha de elaboración: &lt;b&gt;[%format_date(now(), 'dd/MM/yyyy')%]&lt;/b&gt;&lt;br&gt;Referencia geodésica: &lt;b&gt;[% regexp_replace(array_first(string_to_array(@project_crs_description, ' / ')), ' [0-9][0-9][0-9][0-9]$', '') %]&lt;/b&gt;&lt;br&gt;Proyección: &lt;b&gt;[% replace(array_last(string_to_array(@project_crs_description, ' / ')), 'zone ', '') %]&lt;/b&gt;&lt;/div&gt;" type="65641" halign="1" zValue="9" outlineWidthM="0.3,mm" templateUuid="{d55fd024-62c6-480b-976b-ed845cbc8bf3}" positionLock="false" uuid="{d55fd024-62c6-480b-976b-ed845cbc8bf3}" excludeFromExports="0" background="false" valign="128">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
