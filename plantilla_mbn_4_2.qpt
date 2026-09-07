@@ -201,7 +201,7 @@
    </customproperties>
   </LayoutObject>
  </LayoutItem>
- <LayoutItem background="false" blendMode="0" excludeFromExports="0" frame="false" frameJoinStyle="miter" groupUuid="" id="POLIGONO DE UBICACION" itemRotation="0" opacity="1" outlineWidthM="0.3,mm" position="19.8093,264.757,mm" positionLock="false" positionOnPage="19.8093,264.757,mm" referencePoint="0" size="5.66548,5.66953,mm" templateUuid="{5e83e0e6-4676-4ec0-b6ff-67b445ceaa68}" type="65644" uuid="{5e83e0e6-4676-4ec0-b6ff-67b445ceaa68}" visibility="1" zValue="46">
+ <LayoutItem background="false" blendMode="0" excludeFromExports="0" frame="false" frameJoinStyle="miter" groupUuid="" id="POLIGONO DE UBICACION" itemRotation="0" opacity="1" outlineWidthM="0.3,mm" position="19.8093,264.757,mm" positionLock="false" positionOnPage="19.8093,264.757,mm" referencePoint="0" size="5.70000,5.70000,mm" templateUuid="{5e83e0e6-4676-4ec0-b6ff-67b445ceaa68}" type="65644" uuid="{5e83e0e6-4676-4ec0-b6ff-67b445ceaa68}" visibility="1" zValue="46">
   <FrameColor alpha="255" blue="0" green="0" red="0"/>
   <BackgroundColor alpha="255" blue="255" green="255" red="255"/>
   <LayoutObject>
@@ -299,12 +299,50 @@
      </Option>
     </data_defined_properties>
    </layer>
-  </symbol>
+  <layer class="CentroidFill" enabled="1" locked="0" pass="0" id="punto-centro"><Option type="Map"><Option name="clip_on_current_part_only" value="0" type="QString"/><Option name="clip_points" value="0" type="QString"/><Option name="point_on_all_parts" value="1" type="QString"/><Option name="point_on_surface" value="0" type="QString"/></Option><data_defined_properties><Option type="Map"><Option name="name" value="" type="QString"/><Option name="properties"/><Option name="type" value="collection" type="QString"/></Option></data_defined_properties><symbol alpha="1" clip_to_extent="1" force_rhr="0" frame_rate="10" is_animated="0" name="@punto-centro@0" type="marker">
+     <data_defined_properties>
+      <Option type="Map">
+       <Option name="name" type="QString" value=""/>
+       <Option name="properties"/>
+       <Option name="type" type="QString" value="collection"/>
+      </Option>
+     </data_defined_properties>
+     <layer class="SimpleMarker" enabled="1" id="" locked="0" pass="0">
+      <Option type="Map">
+       <Option name="angle" type="QString" value="0"/>
+       <Option name="cap_style" type="QString" value="square"/>
+       <Option name="color" type="QString" value="205,20,31,255,rgb:0.8039216,0.0784314,0.1215686,1"/>
+       <Option name="horizontal_anchor_point" type="QString" value="1"/>
+       <Option name="joinstyle" type="QString" value="bevel"/>
+       <Option name="name" type="QString" value="circle"/>
+       <Option name="offset" type="QString" value="0,0"/>
+       <Option name="offset_map_unit_scale" type="QString" value="3x:0,0,0,0,0,0"/>
+       <Option name="offset_unit" type="QString" value="MM"/>
+       <Option name="outline_color" type="QString" value="255,255,255,255,rgb:1,1,1,1"/>
+       <Option name="outline_style" type="QString" value="solid"/>
+       <Option name="outline_width" type="QString" value="0.5"/>
+       <Option name="outline_width_map_unit_scale" type="QString" value="3x:0,0,0,0,0,0"/>
+       <Option name="outline_width_unit" type="QString" value="MM"/>
+       <Option name="scale_method" type="QString" value="diameter"/>
+       <Option name="size" type="QString" value="1.6"/>
+       <Option name="size_map_unit_scale" type="QString" value="3x:0,0,0,0,0,0"/>
+       <Option name="size_unit" type="QString" value="MM"/>
+       <Option name="vertical_anchor_point" type="QString" value="1"/>
+      </Option>
+      <data_defined_properties>
+       <Option type="Map">
+        <Option name="name" type="QString" value=""/>
+        <Option name="properties"/>
+        <Option name="type" type="QString" value="collection"/>
+       </Option>
+      </data_defined_properties>
+     </layer>
+    </symbol></layer></symbol>
   <nodes>
-   <node x="0" y="0.195052"/>
-   <node x="0.0344405" y="5.66953"/>
-   <node x="5.66548" y="5.65656"/>
-   <node x="5.44155" y="0"/>
+   <node x="0.00000" y="0.00000"/>
+   <node x="0.00000" y="5.70000"/>
+   <node x="5.70000" y="5.70000"/>
+   <node x="5.70000" y="0.00000"/>
   </nodes>
  </LayoutItem>
  <LayoutItem anchorPoint="0" background="false" blendMode="0" excludeFromExports="0" file="" frame="false" frameJoinStyle="miter" groupUuid="" id="" itemRotation="0" mapUuid="" mode="0" northMode="0" northOffset="0" opacity="1" outlineWidthM="0.3,mm" pictureHeight="nan" pictureRotation="0" pictureWidth="nan" position="10.6309,11.0344,mm" positionLock="false" positionOnPage="10.6309,11.0344,mm" referencePoint="0" resizeMode="0" size="1.81152,0,mm" svgBorderColor="0,0,0,255,rgb:0,0,0,1" svgBorderWidth="0.2" svgFillColor="255,255,255,255,rgb:1,1,1,1" templateUuid="{b80bf358-a28a-441b-be35-5edcf66bab0f}" type="65640" uuid="{b80bf358-a28a-441b-be35-5edcf66bab0f}" visibility="1" zValue="39">
