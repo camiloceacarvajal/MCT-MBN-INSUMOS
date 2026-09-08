@@ -1,6 +1,6 @@
 {
-  "version": "2026.09.07",
-  "generado": "2026-09-07 18:22",
+  "version": "2026.09.08",
+  "generado": "2026-09-08 10:14",
   "nota": "Activos del flujo MCT. El script los cachea en el perfil de QGIS y solo vuelve a bajarlos cuando cambia el sha256.",
   "activos": {
     "L2_PROPUESTA.json": {
@@ -10,8 +10,8 @@
     },
     "plantilla_mbn_4_2.qpt": {
       "url": "https://raw.githubusercontent.com/camiloceacarvajal/MCT-MBN-INSUMOS/main/plantilla_mbn_4_2.qpt",
-      "sha256": "66e0943134c3e26760c9acc5c5dcbdef3561cdbb41c2af0f3e3bae131e8749f2",
-      "bytes": 98509
+      "sha256": "6ffcb0e3c855111b574c076707a0dbed8e09bbaa95d5619897f6436599025350",
+      "bytes": 95837
     },
     "logo_mbn.png": {
       "url": "https://raw.githubusercontent.com/camiloceacarvajal/MCT-MBN-INSUMOS/main/logo_mbn.png",
