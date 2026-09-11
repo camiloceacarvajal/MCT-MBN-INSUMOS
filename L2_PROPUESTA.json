@@ -1582,7 +1582,7 @@
       ],
       "tabla_gpkg": "zona_de_interes_turistico"
     },
-    "Monumento Histórico: area": {
+    "Monumento Histórico: área": {
       "frase": "Se identifica superposición con un Monumento Histórico.",
       "sufijo": "[El inmueble está protegido por la Ley N° 17.288; cualquier intervención o modificación requiere la autorización previa y expresa del Consejo de Monumentos Nacionales. Indicar nombre del monumento]",
       "solo_nc": false
