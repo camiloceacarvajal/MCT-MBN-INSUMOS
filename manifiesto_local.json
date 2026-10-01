@@ -1,0 +1,21 @@
+{
+  "version": "2026.10.01.1",
+  "activos": {
+    "L2_PROPUESTA.json": {
+      "url": "https://raw.githubusercontent.com/camiloceacarvajal/MCT-MBN-INSUMOS/main/L2_PROPUESTA.json",
+      "sha256": "f224911a84f7fd4bebc53c01e8ef9855130f2f8f9c2a776adf4ef26b1b3e1eb3",
+      "bytes": 75045
+    },
+    "plantilla_mbn_4_2.qpt": {
+      "url": "https://raw.githubusercontent.com/camiloceacarvajal/MCT-MBN-INSUMOS/main/plantilla_mbn_4_2.qpt",
+      "sha256": "d6ee1eef3bded1087832b0fd8d6b73d6b1823688e40fdf8ca082631c89f6a8f2",
+      "bytes": 95787
+    },
+    "logo_mbn.png": {
+      "url": "https://raw.githubusercontent.com/camiloceacarvajal/MCT-MBN-INSUMOS/main/logo_mbn.png",
+      "sha256": "74358069432f882d0085d4043d4e5ce2c75eaa7fa1e364994fa894d960642810",
+      "bytes": 57104
+    }
+  },
+  "ultima_revision": 0
+}
